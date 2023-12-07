@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"     
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             x:Class="Ventas.Views.CatalogoPrecioPage"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             
+             xmlns:vm="clr-namespace:Ventas.ViewModels"
+             xmlns:sfPager="clr-namespace:Syncfusion.SfDataGrid.XForms.DataPager;assembly=Syncfusion.SfDataGrid.XForms" 
+             Title="{Binding Title}">
+
+
+    <ContentPage.BindingContext>
+        <vm:CatalogoPrecioViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+
+        <StackLayout Padding="10,10" Orientation="Vertical">
+
+            <StackLayout Orientation="Horizontal">
+
+                <button:SfButton x:Name="btnNuevo" Text="Nuevo" Clicked="btnNuevo_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+
+                <button:SfButton x:Name="btnConsultar" Text="Ver" Clicked="btnConsultar_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+
+                <button:SfButton x:Name="btnModificar" Text="Editar" Clicked="btnModificar_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+
+                <button:SfButton x:Name="btnEliminar" Text="Borrar" Clicked="btnEliminar_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+
+                <button:SfButton x:Name="btnCancelar" Text="Salir" Clicked="btnCancelar_Clicked" BackgroundColor="DarkRed" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+            </StackLayout>
+
+            <StackLayout  Orientation="Horizontal">
+
+                <!--<combobox:SfComboBox HeightRequest="40" x:Name="cboTipoPrecio" EnableAutoSize="True" WidthRequest="150" 
+                                         SelectionChanged="cboTipoPrecio_SelectionChanged" FilterCollectionChanged="cboTipoPrecio_FilterCollectionChanged"
+                                         TextSize="Small" DataSource="{Binding MesesCollection}" DisplayMemberPath="Name" />-->
+
+                <button:SfButton x:Name="btnRefrescar" Text="Listar" Clicked="btnRefrescar_Clicked" BackgroundColor="LightBlue" BorderColor="Gray" TextColor="Black"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                <SearchBar x:Name="filterText"
+                  
+                                IsVisible="true"
+                                Placeholder="Busqueda"
+                                FontSize="Small"   
+                                TextChanged="filterText_TextChanged"  />
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" >
+
+                <ScrollView x:Name="ScrollView">
+                    <StackLayout>
+
+                        <datagrid:SfDataGrid 
+                                x:Name="dataGrid"
+                                AutoGenerateColumns="False"
+                                AllowResizingColumn="True"
+                                AutoGenerateColumnsModeForCustomType="Both"
+                                SelectionChanged="dataGrid_SelectionChanged"
+                                SelectionMode="Single">
+
+                            <datagrid:SfDataGrid.GridStyle>
+                                <datagrid:DefaultStyle HeaderBackgroundColor="DarkRed" 
+                                                       HeaderForegroundColor="White"
+                                                       RowBackgroundColor="White" 
+                                                       RowForegroundColor="Black"
+                                                       SelectionBackgroundColor="LightSkyBlue" 
+                                                       SelectionForegroundColor="White"
+                                                       CaptionSummaryRowBackgroundColor="Black" 
+                                                       CaptionSummaryRowForegroundColor="White"
+                                                       GridCellBorderColor="{Binding BorderColor}" 
+                                                       LoadMoreViewBackgroundColor="Gray"
+                                                       LoadMoreViewForegroundColor="Black" 
+                                                       AlternatingRowColor="PapayaWhip"/>
+                            </datagrid:SfDataGrid.GridStyle>
+
+                            <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns" >
+
+                                <datagrid:GridTextColumn HeaderText="Codigo" Width="80" TextAlignment="Start" MappingName="Cab_cCatalogo" />
+                                <datagrid:GridTextColumn HeaderText="Producto" Width="200" TextAlignment="Start" MappingName="Producto" />
+                                <datagrid:GridTextColumn HeaderText="Tipo de Precio" Width="80" TextAlignment="Start" MappingName="TipoPrecio" />
+                                <datagrid:GridTextColumn HeaderText="Correlativo" Width="80" TextAlignment="Start" MappingName="Cpr_cCorrelativo" />
+                                <datagrid:GridTextColumn HeaderText="Moneda" Width="80" TextAlignment="Start" MappingName="Moneda" />
+                                <datagrid:GridNumericColumn HeaderText="Precio" Width="100" TextAlignment="End" MappingName="Cpr_nPrecio" Format="#,#00.00"/>
+                                <datagrid:GridTextColumn HeaderText="Inc.Impuesto" Width="80" TextAlignment="Start" MappingName="Cpr_cFlgIncImpto" />
+                                <datagrid:GridPickerColumn HeaderText="Vigente Desde" Width="80" TextAlignment="Center" MappingName="Cpr_dFechaVigIni" Format="dd/MM/yyyy"/>
+                                <datagrid:GridPickerColumn HeaderText="Vigente Hasta" Width="80" TextAlignment="Center" MappingName="Cpr_dFechaVigFin" Format="dd/MM/yyyy"/>
+                                                                                             
+                                
+                            </datagrid:SfDataGrid.Columns>
+                        </datagrid:SfDataGrid>
+
+                    </StackLayout>
+
+                </ScrollView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

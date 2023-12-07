@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ventas.Views.ClasificacionPage"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:vm="clr-namespace:Ventas.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:ClasificacionViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView x:Name="ScrollView">
+                <StackLayout Orientation="Vertical" >
+
+                    <Frame BackgroundColor="DarkRed" Padding="10" CornerRadius="0">
+
+                    </Frame>
+
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+
+                        <StackLayout Grid.Row="1" Padding="30,20">
+                            <button:SfButton x:Name="btnCategoria" Text="Categoria" Clicked="btnCategoria_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="Fill"  CornerRadius="5"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="2" Padding="30,20">
+                            <button:SfButton x:Name="btnGrupo" Text="Grupo" Clicked="btnGrupo_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="Fill"  CornerRadius="5"/>
+
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="3" Padding="30,20">
+                            <button:SfButton x:Name="btnClase" Text="Clase" Clicked="btnClase_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="Fill"  CornerRadius="5"/>
+
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="4" Padding="30,20">
+                            <button:SfButton x:Name="btnFamilia" Text="Familia" Clicked="btnFamilia_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="Fill"  CornerRadius="5"/>
+
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="6" Padding="30,20">
+                            <button:SfButton x:Name="btnCancelar" Text="Regresar" Clicked="btnCancelar_Clicked" BackgroundColor="DarkRed" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="Fill"  CornerRadius="5"/>
+
+                        </StackLayout>
+
+
+
+                    </Grid>
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

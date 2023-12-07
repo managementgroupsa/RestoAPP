@@ -1,0 +1,170 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:numerictextbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ventas.Views.CatalogoPrecioDetallePage"
+             xmlns:vm="clr-namespace:Ventas.ViewModels"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"                         
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"             
+             xmlns:sfDatePicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:CatalogoPrecioDetalleViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView x:Name="ScrollView">
+            <StackLayout Orientation="Vertical" Padding="10,10" >
+                
+                
+                <StackLayout Orientation="Horizontal" >
+                    <picker:SfPicker x:Name="tdbcCatalogo" 
+                                     HeaderText="Catalogo"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcCatalogo_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                    <inputLayout:SfTextInputLayout Hint= "Catalogo" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtCatalogo" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+                    <button:SfButton x:Name="btnCatalogo" Text="..." Clicked="btnCatalogo_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" >
+                    <picker:SfPicker x:Name="tdbcTipoPrecio" 
+                                     HeaderText="Tipo"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcTipoPrecio_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                    
+                    <inputLayout:SfTextInputLayout Hint= "Tipo de Precio" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtTipoPrecio" HorizontalTextAlignment="Start" TextColor="Black"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+                    <button:SfButton x:Name="btnTipoPrecio" Text="..." Clicked="btnTipoPrecio_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                    <inputLayout:SfTextInputLayout Hint= "Correlativo" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtCorrelativo" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>                   
+                    
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" >
+                    <picker:SfPicker x:Name="tdbcMoneda" 
+                                     HeaderText="Moneda"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcMoneda_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                    <inputLayout:SfTextInputLayout Hint= "Moneda" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtMoneda" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+                    <button:SfButton x:Name="btnMoneda" Text="..." Clicked="btnMoneda_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                </StackLayout>                
+
+                <StackLayout Orientation="Vertical" >
+                    
+                    <inputLayout:SfTextInputLayout Hint= "Precio" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                        <numerictextbox:SfNumericTextBox x:Name="txtPrecio"  TextColor="Black"  IsReadOnly="False" WidthRequest="320" HeightRequest="46" MaximumNumberDecimalDigits="2" TextAlignment="End" FontSize="Small"/>
+                    </inputLayout:SfTextInputLayout>
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">                 
+
+                <sfDatePicker:SfDatePicker x:Name="dtpFechaVigenteDesde"  Format="dd_MMM_yyyy"  HorizontalOptions="Start" 
+                                     HeaderBackgroundColor="DarkRed"
+                                     HeaderText="Fecha"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     SelectedItemTextColor="Red"
+                                     SelectedItemFontSize="Small"
+                                     CancelButtonTextColor="DarkGreen"
+                                     OKButtonTextColor="DarkGreen"
+                                     OkButtonClicked="dtpFechaVigenteDesde_OkButtonClicked"
+                                     PickerMode="Dialog"/>
+                <inputLayout:SfTextInputLayout Hint= "Vigente Desde" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                    <Entry x:Name="txtFechaVigenteDesde" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="240" HeightRequest="46"/>
+                </inputLayout:SfTextInputLayout>
+                <button:SfButton x:Name="btnFechaVigenteDesde" Text="..." Clicked="btnFechaVigenteDesde_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+
+                <sfDatePicker:SfDatePicker x:Name="dtpFechaVigenteHasta"  Format="dd_MMM_yyyy"  HorizontalOptions="Start" 
+                                     HeaderBackgroundColor="DarkRed"
+                                     HeaderText="Fecha"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     SelectedItemTextColor="Red"
+                                     SelectedItemFontSize="Small"
+                                     CancelButtonTextColor="DarkGreen"
+                                     OKButtonTextColor="DarkGreen"
+                                     OkButtonClicked="dtpFechaVigenteHasta_OkButtonClicked"
+                                     PickerMode="Dialog"/>
+                <inputLayout:SfTextInputLayout Hint= "Vigente Hasta" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                        <Entry x:Name="txtFechaVigenteHasta" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="240" HeightRequest="46"/>
+                </inputLayout:SfTextInputLayout>
+                <button:SfButton x:Name="btnFechaVigenteHasta" Text="..." Clicked="btnFechaVigenteHasta_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                </StackLayout>
+
+                <StackLayout Padding="0,5" Orientation="Horizontal" HorizontalOptions="Center">
+                    <button:SfCheckBox x:Name="chkIncluyeImp" Text="Precios Incluido Impuestos" IsChecked="True" CheckedColor="DarkRed"/>
+                </StackLayout>
+
+                <StackLayout Padding="10,20" Orientation="Horizontal"  >
+                    <button:SfButton x:Name="btnGrabar" Text="Grabar" Clicked="btnGrabar_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White"  FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+
+                    <button:SfButton x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" BackgroundColor="DarkRed" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>    

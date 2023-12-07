@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ventas.Views.CatalogoDetallePage"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"             
+             xmlns:vm="clr-namespace:Ventas.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:CatalogoDetalleViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView x:Name="ScrollView">
+            <StackLayout Orientation="Vertical" Padding="10,10" >
+
+                <StackLayout Orientation="Horizontal">
+                    <picker:SfPicker x:Name="tdbcTipoBS" 
+                                     HeaderText="Tipo"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcTipoBS_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                    <inputLayout:SfTextInputLayout Hint= "Tipo" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                        <Entry x:Name="txtTipoBS" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+                    <button:SfButton x:Name="btnTipoBS" Text="..." Clicked="btnTipoBS_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" >
+                    <picker:SfPicker x:Name="tdbcCategoria" 
+                                     HeaderText="Categoria"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcCategoria_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                    <inputLayout:SfTextInputLayout Hint= "Categoría" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtCategoria" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+                    <button:SfButton x:Name="btnCategoria" Text="..." Clicked="btnCategoria_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" >
+                    <picker:SfPicker x:Name="tdbcGrupo" 
+                                     HeaderText="Grupo"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcGrupo_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                    <inputLayout:SfTextInputLayout Hint= "Grupo" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtGrupo" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+                    <button:SfButton x:Name="btnGrupo" Text="..." Clicked="btnGrupo_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" >
+                    <picker:SfPicker x:Name="tdbcClase" 
+                                     HeaderText="Clase"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcClase_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                    <inputLayout:SfTextInputLayout Hint= "Clase" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtClase" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+                    <button:SfButton x:Name="btnClase" Text="..." Clicked="btnClase_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" >
+                    <picker:SfPicker x:Name="tdbcFamilia" 
+                                     HeaderText="Familia"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcFamilia_OkButtonClicked"
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                    <inputLayout:SfTextInputLayout Hint= "Familia" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtFamilia" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+                    <button:SfButton x:Name="btnFamilia" Text="..." Clicked="btnFamilia_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" >
+
+                    <inputLayout:SfTextInputLayout Hint= "Codigo" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtCodigo" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint= "Descripción" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtDescripcion" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+
+
+                    <inputLayout:SfTextInputLayout Hint= "Propio" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtPropio" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" >
+
+                    <picker:SfPicker x:Name="tdbcUnidad" 
+                                     HeaderText="Unidad"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcUnidad_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     CancelButtonTextColor="DarkGreen"
+                                     OKButtonTextColor="DarkGreen"
+                                     PickerHeight="430" 
+                                     PickerMode="Dialog"/>
+                    <inputLayout:SfTextInputLayout Hint= "Unidad" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                        <Entry x:Name="txtUnidad" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                    </inputLayout:SfTextInputLayout>
+                    <button:SfButton x:Name="btnUnidad" Text="..." Clicked="btnUnidad_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+
+
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" >
+
+                    <inputLayout:SfTextInputLayout Hint= "Detalles" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="55" >
+                        <Editor x:Name="txtEspecificaciones" TextColor="Black" IsReadOnly="True"  WidthRequest="320"/>
+                    </inputLayout:SfTextInputLayout>
+
+
+                </StackLayout>
+
+                <StackLayout Padding="10,20" Orientation="Horizontal"  >
+                    <button:SfButton x:Name="btnGrabar" Text="Grabar" Clicked="btnGrabar_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White"  FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+
+                    <button:SfButton x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" BackgroundColor="DarkRed" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+                </StackLayout>
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>               

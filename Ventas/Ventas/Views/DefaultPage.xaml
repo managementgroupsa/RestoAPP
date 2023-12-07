@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ventas.Views.DefaultPage"
+             xmlns:vm="clr-namespace:Ventas.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:DefaultViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+
+
+        
+
+        <RelativeLayout>
+            <Image Aspect="AspectFit"  Source="FondoERPPLUS.jpg"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}"/>
+
+            
+            <StackLayout Orientation="Vertical" Padding="5,10" >
+
+                
+                <Label x:Name="lblNombreEmpresa" TextColor="Gray" FontSize="Micro"/>
+                <Label x:Name="lblEmpresa"  TextColor="Gray" FontSize="Micro"/>
+                <Label x:Name="lblPuntoVenta" TextColor="Gray" FontSize="Micro"/>
+                <Label x:Name="lblUsuario" TextColor="Gray" FontSize="Micro"/>
+                <Label x:Name="lblAnio" TextColor="Gray" FontSize="Micro"/>
+
+
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="T.SESION: " TextColor="Gray" FontSize="Micro"/>
+                    <Label Text="{Binding TiempoSesion}" FontSize="Micro"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="T.ACTIVIDAD: " TextColor="Gray" FontSize="Micro"/>
+                    <Label Text="{Binding TiempoInactividad}" FontSize="Micro"/>
+                </StackLayout>
+
+                
+            </StackLayout>
+
+
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+                <Label Text="Logo" VerticalOptions="Center" HorizontalOptions="Center" FontSize="30" TextColor="White"/>
+            </Grid>
+
+
+        </RelativeLayout>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

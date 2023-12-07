@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             mc:Ignorable="d"
+             x:Class="Ventas.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <ScrollView x:Name="ScrollView">
+            <StackLayout Orientation="Vertical" >
+
+                <StackLayout x:Name="LayaoutLogeo" IsVisible="true">
+                    <StackLayout Orientation="Vertical" >
+                        <Frame BackgroundColor="DarkRed" Padding="10" CornerRadius="0">
+                            <Label Text="Modulo de Ventas" HorizontalTextAlignment="Center" TextColor="White" FontSize="Medium"/>
+                        </Frame>
+
+
+                        <Image Source="logo.jpg" WidthRequest="40" HeightRequest="40" Margin="0,50,0,30"/>
+
+                        <StackLayout Padding="30,20">
+
+                            <inputLayout:SfTextInputLayout Hint="Usuario" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" >
+                                <Entry x:Name="txtUsuario" HorizontalTextAlignment="Start" TextColor="Black" />
+                            </inputLayout:SfTextInputLayout>
+
+                            <inputLayout:SfTextInputLayout Hint="Contraseña" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" >
+                                <Entry x:Name="txtContraseña" HorizontalTextAlignment="Start" TextColor="Black"  IsPassword="True" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+
+                    </StackLayout>
+
+                    <StackLayout Padding="30,20">
+
+
+                        <button:SfButton x:Name="btnPrincipa" Text="Ingresar" Clicked="btnPrincipal_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" CornerRadius="10" HorizontalOptions="FillAndExpand" />
+
+                    </StackLayout>
+
+                    <StackLayout Padding="30,80" Orientation="Vertical" >
+                        <Label Text="Designed by © 2022 MANAGEMENT GROUP S.A." HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Text="Version 1.0" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout x:Name="LayaoutEmpresas" IsVisible="false">
+
+                    <Frame BackgroundColor="DarkRed" Padding="10" CornerRadius="0">
+                        <Label Text="Modulo de Ventas" HorizontalTextAlignment="Center" TextColor="White" FontSize="Medium"/>
+                    </Frame>
+                    
+                    <StackLayout Orientation="Vertical" >
+                        <StackLayout  Padding="30,20">
+
+                            <Image Source="logo.jpg" WidthRequest="40" HeightRequest="40" Margin="0,50,0,30"/>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <picker:SfPicker x:Name="tdbcEmpresas" 
+                                     HeaderText="Lista de Empresas"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcEmpresas_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Default"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                         PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+
+                                <inputLayout:SfTextInputLayout Hint= "Empresa" Grid.Row="0" Grid.Column="0"  FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" >
+                                    <Entry x:Name="txtEmpresas" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"/>
+                                </inputLayout:SfTextInputLayout>
+                                <button:SfButton x:Name="cmdEmpresas" Text="..." Clicked="cmdEmpresas_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" CornerRadius="5"/>
+
+
+                                <picker:SfPicker x:Name="tdbcAnios" 
+                                     HeaderText="Lista de Años"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcAnios_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Default"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                                <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="0" Hint="Año" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" >
+                                    <Entry x:Name="txtAnios" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" />
+                                </inputLayout:SfTextInputLayout>
+                                <button:SfButton x:Name="cmdAnios" Text="..." Clicked="cmdAnios_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1" CornerRadius="5"/>
+
+
+                                <picker:SfPicker x:Name="tdbcPuntosVenta" 
+                                     HeaderText="Lista de Puntos de Venta"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcPuntosVenta_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Default"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                                <inputLayout:SfTextInputLayout Grid.Row="2" Grid.Column="0" Hint="Punto de Venta"  FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" >
+                                    <Entry x:Name="txtPuntoVenta" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"/>
+                                </inputLayout:SfTextInputLayout>
+                                <button:SfButton x:Name="cmdPuntoVenta" Text="..." Clicked="cmdPuntoVenta_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1" CornerRadius="5"/>
+
+                            </Grid>
+
+                        </StackLayout>
+
+                        <StackLayout Padding="30,20" Orientation="Horizontal"  >
+
+                            <button:SfButton x:Name="btnPrincipal_Empresas" Text="Ingresar" Clicked="btnPrincipal_Empresas_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" CornerRadius="10" HorizontalOptions="FillAndExpand" />
+
+                            <button:SfButton x:Name="btnCancelar_Empresas" Text="Cancelar" Clicked="btnCancelar_Empresas_Clicked" BackgroundColor="DarkRed" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" CornerRadius="10" HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+
+                        <StackLayout Padding="30,50" Orientation="Vertical" >
+                            <Label Text="Designed by © 2022 MANAGEMENT GROUP S.A." HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Text="Version 1.0" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+
+                    </StackLayout>
+                    
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

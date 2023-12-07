@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             x:Class="Ventas.Views.ClientesDetallePage"
+             xmlns:vm="clr-namespace:Ventas.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:ClientesDetalleViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView x:Name="ScrollView">
+            <StackLayout Orientation="Vertical" Padding="10,10" >
+                <StackLayout  Orientation="Horizontal" >
+
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Entry x:Name="txtCodigo"  Placeholder="" PlaceholderColor="Gray" HorizontalOptions="FillAndExpand" IsVisible="False"/>
+
+                        <inputLayout:SfTextInputLayout Hint= "RUC/DNI" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="55">
+                            <Entry x:Name="txtNumero" HorizontalTextAlignment="Start" TextColor="Black"   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="0"/>
+                        </inputLayout:SfTextInputLayout>
+
+                        <button:SfButton x:Name="btnBuscar" Text="Buscar" Clicked="btnBuscar_Clicked" BackgroundColor="LightBlue" BorderColor="Gray" TextColor="Black"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5" Grid.Row="0" Grid.Column="1"/>
+
+
+                    </Grid>
+
+                </StackLayout>
+
+                <StackLayout  Orientation="Vertical"  VerticalOptions="Center">
+
+                    <inputLayout:SfTextInputLayout Hint= "Razón/Nombre" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="55" >
+                        <Entry x:Name="txtNombre" HorizontalTextAlignment="Start" TextColor="Black"  VerticalOptions="Center" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint= "Dirección" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White"  HeightRequest="55">
+                        <Entry x:Name="txtDireccion" HorizontalTextAlignment="Start" TextColor="Black"  VerticalOptions="Center"/>
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint= "Ubigeo" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White"  HeightRequest="55">
+                        <Entry x:Name="txtUbigeo" HorizontalTextAlignment="Start" TextColor="Black"  VerticalOptions="Center"  />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint= "Teléfono" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White"  HeightRequest="55">
+                        <Entry x:Name="txtTelefono" HorizontalTextAlignment="Start" TextColor="Black"   VerticalOptions="CenterAndExpand" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint= "Correo" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White"  HeightRequest="55">
+                        <Entry x:Name="txtCorreo" HorizontalTextAlignment="Start" TextColor="Black"   VerticalOptions="CenterAndExpand" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint= "Otros" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White"  HeightRequest="55">
+                        <Editor x:Name="txtOtros" TextColor="Black"   VerticalOptions="CenterAndExpand" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint= "Estado" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White"  HeightRequest="55">
+                        <Entry x:Name="txtEstado" HorizontalTextAlignment="Start" TextColor="Black"   VerticalOptions="CenterAndExpand" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint= "Condición" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White"  HeightRequest="55">
+                        <Entry x:Name="txtCondicion" HorizontalTextAlignment="Start" TextColor="Black"   VerticalOptions="CenterAndExpand" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <Entry HorizontalOptions="FillAndExpand" x:Name="txtTipoDocumento"  Placeholder="" PlaceholderColor="Gray" IsVisible="False"/>
+
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal"  Padding="0,10" >
+                    <button:SfButton x:Name="btnGrabar" Text="Grabar" Clicked="btnGrabar_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White"  FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+
+                    <button:SfButton x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" BackgroundColor="DarkRed" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+                </StackLayout>
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>             

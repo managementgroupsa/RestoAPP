@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:numerictextbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ventas.Views.NotaCreditoDetallePage"
+             xmlns:vm="clr-namespace:Ventas.ViewModels"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"                         
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"             
+             xmlns:sfDatePicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:NotaCreditoDetalleViewModel/>
+    </ContentPage.BindingContext>
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding GoBackcommand}">
+        </BackButtonBehavior>
+    </Shell.BackButtonBehavior>
+
+    <ContentPage.Content>
+        <ScrollView x:Name="ScrollView">
+            <tabview:SfTabView x:Name="tabNotaCredito" BackgroundColor="White" SelectionChanging="tabNotaCredito_SelectionChanging" >
+
+                <tabview:SfTabItem Title="1. Cabecera">
+                    <tabview:SfTabItem.Content>
+
+                        <StackLayout Orientation="Vertical" Padding="10,10">
+
+                            <StackLayout Orientation="Vertical" >
+
+                                <StackLayout Orientation="Horizontal">
+                                    <picker:SfPicker x:Name="tdbcTipoNotaCredito" 
+                                     HeaderText="Tipo Nota de Credito"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcTipoNotaCredito_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                                    <inputLayout:SfTextInputLayout Hint= "Tipo Nota de Credito" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                                        <Entry x:Name="txtTipoNotaCredito" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="320" HeightRequest="46"/>
+                                    </inputLayout:SfTextInputLayout>
+                                    <button:SfButton x:Name="btnTipoNotaCredito" Text="..." Clicked="btnTipoNotaCredito_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <picker:SfPicker x:Name="tdbcSerie" 
+                                     HeaderText="Serie Documento"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcSerie_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                                    
+                                    
+                                    <inputLayout:SfTextInputLayout Hint= "Serie Documento" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                                        <Entry x:Name="txtSeriedoc" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="110" HeightRequest="46"/>
+                                    </inputLayout:SfTextInputLayout>
+
+                                    <button:SfButton x:Name="btnSeriedoc" Text="..." Clicked="btnSeriedoc_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+
+                                    <inputLayout:SfTextInputLayout Hint= "Número Documento" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                                        <Entry x:Name="txtNumeroDoc" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="155" HeightRequest="46" />
+                                    </inputLayout:SfTextInputLayout>
+
+                                </StackLayout>
+
+
+                                <StackLayout Orientation="Horizontal">
+                                    <sfDatePicker:SfDatePicker x:Name="dtpFechaEmision"  Format="dd_MMM_yyyy"  HorizontalOptions="Fill" 
+                                     HeaderBackgroundColor="DarkRed"
+                                     HeaderText="Fecha"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     SelectedItemTextColor="Red"
+                                     SelectedItemFontSize="Small"
+                                     CancelButtonTextColor="DarkGreen"
+                                     OKButtonTextColor="DarkGreen"
+                                     OkButtonClicked="dtpFechaEmision_OkButtonClicked"
+                                     PickerMode="Dialog"/>
+                                    <inputLayout:SfTextInputLayout Hint= "Fecha Emisión" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                                        <Entry x:Name="txtFechaEmision" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="200" HeightRequest="46"/>
+                                    </inputLayout:SfTextInputLayout>
+                                    <button:SfButton x:Name="btnFechaEmision" Text="..." Clicked="btnFechaEmision_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                                   
+                                </StackLayout>
+                               
+                            </StackLayout>
+
+                            <StackLayout  Orientation="Horizontal" >
+
+                                <Entry x:Name="txtCodigo" IsVisible="False"/>
+                                <Entry x:Name="txtUbigeo" IsVisible="False"/>
+                                <Entry x:Name="txtTipoDocumento" IsVisible="False"/>
+                                <Entry x:Name="txtEstado" IsVisible="False"/>
+                                <Entry x:Name="txtCondicion" IsVisible="False"/>
+
+                                <inputLayout:SfTextInputLayout Hint= "RUC/DNI" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                                    <Entry x:Name="txtNumeroDocId" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="320" HeightRequest="46" Keyboard="Numeric" Unfocused="txtNumeroDocId_Unfocused" TextChanged="txtNumeroDocId_TextChanged"/>
+                                </inputLayout:SfTextInputLayout>
+
+
+                                <button:SfButton x:Name="btnBuscar" Text="Buscar Cliente" Clicked="btnBuscar_Clicked" BackgroundColor="LightBlue" BorderColor="Gray" TextColor="Black"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5" />
+
+                            </StackLayout>
+
+                            <StackLayout Orientation="Vertical" >
+
+                                <inputLayout:SfTextInputLayout Hint= "Nombre/Razon" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                                    <Entry x:Name="txtRazon" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                                </inputLayout:SfTextInputLayout>
+                                <inputLayout:SfTextInputLayout Hint= "Dirección" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                                    <Entry x:Name="txtDireccion" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="320" HeightRequest="46"/>
+                                </inputLayout:SfTextInputLayout>
+
+                            </StackLayout>
+                            
+                            <StackLayout Orientation="Horizontal" >
+
+                                <StackLayout Orientation="Horizontal">
+                                    
+                                    <button:SfButton x:Name="btnBuscarFt" Text="Buscar Doc." Clicked="btnBuscarFt_Clicked" BackgroundColor="LightBlue" BorderColor="Gray" TextColor="Black"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5" />
+                                    
+                                    <inputLayout:SfTextInputLayout Hint= "Tipo" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                                        <Entry x:Name="txtTipoDocFt" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="90" HeightRequest="46"/>
+                                    </inputLayout:SfTextInputLayout>
+                                    <inputLayout:SfTextInputLayout Hint= "Serie" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                                        <Entry x:Name="txtSerieDocFt" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="80" HeightRequest="46" />
+                                    </inputLayout:SfTextInputLayout>
+                                    <inputLayout:SfTextInputLayout Hint= "Número" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50" >
+                                        <Entry x:Name="txtNumeroDocFt" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"  WidthRequest="150" HeightRequest="46" />
+                                    </inputLayout:SfTextInputLayout>                            
+                                   
+
+                                </StackLayout>                               
+
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" >                                
+
+                                <StackLayout Orientation="Horizontal">
+
+                                    <inputLayout:SfTextInputLayout Hint= "Fecha de Doc." FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                                        <Entry x:Name="txtFechaDocumento" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="240" HeightRequest="46"/>
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <inputLayout:SfTextInputLayout Hint= "Fecha de Venc." FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                                        <Entry x:Name="txtFechaVencimiento" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="240" HeightRequest="46"/>
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                
+                                <inputLayout:SfTextInputLayout Hint= "Observación" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                                    <Entry x:Name="txtObservación" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="320" HeightRequest="46"/>
+                                </inputLayout:SfTextInputLayout>                                
+                                
+                            </StackLayout>              
+                                                
+                            <StackLayout Padding="0,5" Orientation="Horizontal" HorizontalOptions="Center">
+                                <button:SfCheckBox x:Name="chkIGV" Text="Inc. IGV" IsChecked="True" CheckedColor="DarkRed"/>
+                                <!--<button:SfCheckBox x:Name="chkDetraccion" Text="Detracción" CheckedColor="DarkRed"/>-->
+                            </StackLayout>
+                            
+                            <StackLayout  Orientation="Horizontal"  >
+                                <button:SfButton x:Name="btnGrabar" Text="Grabar" Clicked="btnGrabar_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White"  FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+
+                                <button:SfButton x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" BackgroundColor="DarkRed" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </tabview:SfTabItem.Content>
+                </tabview:SfTabItem>
+            </tabview:SfTabView>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>  

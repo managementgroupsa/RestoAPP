@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ventas.Views.VentasDetalleCuotasPage"
+             xmlns:vm="clr-namespace:Ventas.ViewModels"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:numerictextbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:sfDatePicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:VentasDetalleCuotasPage/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView x:Name="ScrollViewCuotas">
+            <StackLayout Orientation="Vertical">
+
+
+                <StackLayout Orientation="Horizontal" >
+
+                    <sfDatePicker:SfDatePicker x:Name="dtpFechas"  Format="dd_MMM_yyyy"  HorizontalOptions="Fill" 
+                                     HeaderBackgroundColor="DarkRed"
+                                     HeaderText="Fecha"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     SelectedItemTextColor="Red"
+                                     SelectedItemFontSize="Small"
+                                     CancelButtonTextColor="DarkGreen"
+                                     OKButtonTextColor="DarkGreen"
+                                     OkButtonClicked="dtpFechas_OkButtonClicked"
+                                     PickerMode="Dialog"/>
+
+                    <button:SfButton x:Name="btnFecha" Text="..." Clicked="btnFecha_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" CornerRadius="5"/>
+
+
+                    <inputLayout:SfTextInputLayout Hint= "Fecha" Grid.Row="0" Grid.Column="0"  FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" >
+                        <Entry x:Name="txtFecha" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True"/>
+                    </inputLayout:SfTextInputLayout>
+
+
+
+                    <button:SfButton x:Name="btnBuscar" Text="Buscar" Clicked="btnBuscar_Clicked" BackgroundColor="LightBlue" BorderColor="Gray" TextColor="Black"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5" Grid.Row="0" Grid.Column="1"/>
+                </StackLayout>
+                
+
+                <StackLayout Padding="30,20" Orientation="Vertical" >
+
+
+                    <inputLayout:SfTextInputLayout Hint= "Cuota" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" >
+                        <numerictextbox:SfNumericTextBox x:Name="txtCuota"  TextColor="Black"    VerticalOptions="CenterAndExpand" MaximumNumberDecimalDigits="2" />
+                    </inputLayout:SfTextInputLayout>
+
+
+
+                </StackLayout>
+
+                <StackLayout Padding="30,20" Orientation="Horizontal"  >
+                    <button:SfButton x:Name="btnAceptar" Text="Aceptar" Clicked="btnAceptar_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White"  FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+
+                    <button:SfButton x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" BackgroundColor="DarkRed" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

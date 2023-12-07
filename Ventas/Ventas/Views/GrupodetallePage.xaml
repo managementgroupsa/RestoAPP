@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ventas.Views.GrupodetallePage"
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"                          
+             xmlns:vm="clr-namespace:Ventas.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:GrupoDetalleViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Content>
+        <ScrollView x:Name="ScrollView">
+            <StackLayout Orientation="Vertical">
+                <StackLayout Padding="30,20" Orientation="Vertical" >
+
+                    <StackLayout Orientation="Horizontal">
+                        <picker:SfPicker x:Name="tdbcCategoria"  
+                                     HeaderText="Categoria"
+                                     ShowColumnHeader="True"
+                                     ShowFooter="True"
+                                     OkButtonClicked="tdbcCategoria_OkButtonClicked"        
+                                     HeaderBackgroundColor="DarkRed"
+                                     UnSelectedItemTextColor="Black"
+                                     SelectedItemTextColor="DarkBlue"
+                                     SelectedItemFontSize="Small"
+                                     UnSelectedItemFontSize="Small"
+                                     BorderColor="GhostWhite"
+                                     
+                                     ColumnHeaderBackgroundColor="GhostWhite"
+                                     CancelButtonTextColor="White"
+                                     BackgroundColor="GhostWhite"
+                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonTextColor="White"
+                                     CancelButtonBackgroundColor="DarkRed"
+                                     PickerHeight="550" 
+                                     PickerMode="Dialog"/>
+                        <inputLayout:SfTextInputLayout Hint= "Categoría" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" HeightRequest="50">
+                            <Entry x:Name="txtCategoria" HorizontalTextAlignment="Start" TextColor="Black" IsReadOnly="True" WidthRequest="320" HeightRequest="46"/>
+                        </inputLayout:SfTextInputLayout>
+                        <button:SfButton x:Name="btCategoria" Text="..." Clicked="btCategoria_Clicked" BackgroundColor="LightGray" BorderColor="Gray"
+                                     HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" CornerRadius="5"/>
+                    </StackLayout>
+
+
+                    <inputLayout:SfTextInputLayout Hint= "Código" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" >
+                        <Entry x:Name="txtCodigo" HorizontalTextAlignment="Start" TextColor="Black"    VerticalOptions="CenterAndExpand" />
+                    </inputLayout:SfTextInputLayout>
+
+                    <inputLayout:SfTextInputLayout Hint= "Descripción" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" >
+                        <Entry x:Name="txtDescripcion" HorizontalTextAlignment="Start" TextColor="Black"   VerticalOptions="CenterAndExpand" />
+                    </inputLayout:SfTextInputLayout>
+
+
+                </StackLayout>
+
+                <StackLayout Padding="30,20" Orientation="Horizontal"  >
+                    <button:SfButton x:Name="btnGrabar" Text="Grabar" Clicked="btnGrabar_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                                                 TextColor="White"  FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+
+                    <button:SfButton x:Name="btnCancelar" Text="Cancelar" Clicked="btnCancelar_Clicked" BackgroundColor="DarkRed" BorderColor="Gray"
+                                                 TextColor="White" FontAttributes="None" 
+                                                 HasShadow="True" BorderWidth="1" HorizontalOptions="FillAndExpand" CornerRadius="5"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
