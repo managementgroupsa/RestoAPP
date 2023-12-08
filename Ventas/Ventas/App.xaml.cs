@@ -35,7 +35,7 @@ namespace RestoAPP
             // ViewModels
             Locator.CurrentMutable.Register(() => new LoadingViewModel());
             Locator.CurrentMutable.Register(() => new LoginViewModel());
-            Locator.CurrentMutable.Register(() => new RegistrationViewModel());
+            //Locator.CurrentMutable.Register(() => new RegistrationViewModel());
         }
 
         protected override void OnStart()

@@ -88,34 +88,15 @@ namespace RestoAPP
             
 
             // Ruteo de primer nivel
-            Routing.RegisterRoute(nameof(CategoriaPage), typeof(CategoriaPage));
-            Routing.RegisterRoute(nameof(GrupoPage), typeof(GrupoPage));
-            Routing.RegisterRoute(nameof(ClasePage), typeof(ClasePage));
-            Routing.RegisterRoute(nameof(FamiliaPage), typeof(FamiliaPage));
-
+            //Routing.RegisterRoute(nameof(CategoriaPage), typeof(CategoriaPage));
+            
             // Ruteo de segundo nivel
-            Routing.RegisterRoute(nameof(ClientesDetallePage), typeof(ClientesDetallePage));
-            Routing.RegisterRoute(nameof(CatalogoDetallePage), typeof(CatalogoDetallePage));
-
-            Routing.RegisterRoute(nameof(TipoPrecioDetallePage), typeof(TipoPrecioDetallePage));
-            Routing.RegisterRoute(nameof(CatalogoPrecioDetallePage), typeof(CatalogoPrecioDetallePage));
-
-            Routing.RegisterRoute(nameof(TipoCambioDetallePage), typeof(TipoCambioDetallePage));
-            
-            Routing.RegisterRoute(nameof(VentasDetallePage), typeof(VentasDetallePage));
-            
-            Routing.RegisterRoute(nameof(NotaCreditoDetallePage), typeof(NotaCreditoDetallePage));
-
-            Routing.RegisterRoute(nameof(CategoriadetallePage), typeof(CategoriadetallePage));
-            Routing.RegisterRoute(nameof(GrupodetallePage), typeof(GrupodetallePage));
-            Routing.RegisterRoute(nameof(ClasedetallePage), typeof(ClasedetallePage));
-            Routing.RegisterRoute(nameof(FamiliadetallePage), typeof(FamiliadetallePage));
+            //Routing.RegisterRoute(nameof(ClientesDetallePage), typeof(ClientesDetallePage));
             
 
             // Ruteo de tercer nivel
-            Routing.RegisterRoute(nameof(VentasDetalleProductoPage), typeof(VentasDetalleProductoPage));
-            Routing.RegisterRoute(nameof(VentaDetalleCuotaPage), typeof(VentaDetalleCuotaPage));
-
+            //Routing.RegisterRoute(nameof(VentasDetalleProductoPage), typeof(VentasDetalleProductoPage));
+            
             BindingContext = this;
         }
 

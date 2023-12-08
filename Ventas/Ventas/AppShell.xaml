@@ -92,38 +92,6 @@
     </FlyoutItem>
 
     
-    <FlyoutItem Title="Clientes" Icon="client.png">
-        <ShellContent Route="ClientesPage" ContentTemplate="{DataTemplate local:ClientesPage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Catalogo" Icon="catalogo.png">
-        <ShellContent Route="CatalogoPage" ContentTemplate="{DataTemplate local:CatalogoPage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Tipo de Precio" Icon="clasificacion.png">
-        <ShellContent Route="TipoPrecioPage" ContentTemplate="{DataTemplate local:TipoPrecioPage}" />
-    </FlyoutItem>
-    
-    <FlyoutItem Title="Lista de Precios" Icon="catalogo.png">
-        <ShellContent Route="CatalogoPrecioPage" ContentTemplate="{DataTemplate local:CatalogoPrecioPage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Tipo de Cambio" Icon="cambio.png">
-        <ShellContent Route="TipoCambioPage" ContentTemplate="{DataTemplate local:TipoCambioPage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Clasificación" Icon="clasificacion.png">
-        <ShellContent Route="ClasificacionPage" ContentTemplate="{DataTemplate local:ClasificacionPage}" />
-    </FlyoutItem>
-
-    
-    <FlyoutItem Title="Boletas / Facturas" Icon="comprobantes.png">
-        <ShellContent Route="VentasPage" ContentTemplate="{DataTemplate local:VentasPage}" />
-    </FlyoutItem>
-
-    <FlyoutItem Title="Nota de Crédito" Icon="comprobantes.png">
-        <ShellContent Route="NotaCreditoPage" ContentTemplate="{DataTemplate local:NotaCreditoPage}" />
-    </FlyoutItem>
 
     <FlyoutItem Title="Acerca de.." Icon="about.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />

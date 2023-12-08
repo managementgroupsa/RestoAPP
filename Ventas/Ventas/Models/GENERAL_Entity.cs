@@ -7,16 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RestoAPP.Models
 {
-    public class VENTAS_Entity
-    {
 
-        public VTM_DOC_VENTA_Entity Cabecera { get; set; }
-
-        public List<VTD_DOC_VENTA_Entity> Detalles { get; set; }
-
-        public List<VTM_DOC_VENTA_CUOTAS_Entity> Cuotas { get; set; }
-
-    }
 
 
     public class LGT_SERIEDOC_Entity
