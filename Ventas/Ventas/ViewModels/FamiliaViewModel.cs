@@ -2,13 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Ventas.Models;
+using RestoAPP.Models;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using System.Data;
-using Ventas.Extensions;
+using RestoAPP.Extensions;
 
-namespace Ventas.ViewModels
+namespace RestoAPP.ViewModels
 {
     public class FamiliaViewModel : BaseViewModel
     {

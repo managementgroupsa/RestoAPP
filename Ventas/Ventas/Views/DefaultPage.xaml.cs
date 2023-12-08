@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Ventas.Views
+namespace RestoAPP.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DefaultPage : ContentPage

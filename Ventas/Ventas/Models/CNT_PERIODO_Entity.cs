@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ventas.Models
+namespace RestoAPP.Models
 {
     public class CNT_PERIODO_Entity
     {

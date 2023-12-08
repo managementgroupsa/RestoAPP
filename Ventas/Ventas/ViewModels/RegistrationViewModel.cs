@@ -1,10 +1,10 @@
-﻿using Ventas.Services.Routing;
+﻿using RestoAPP.Services.Routing;
 using Splat;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Ventas.ViewModels
+namespace RestoAPP.ViewModels
 {
     class RegistrationViewModel : BaseViewModel
     {

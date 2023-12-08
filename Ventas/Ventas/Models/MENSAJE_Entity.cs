@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace Ventas.Models
+namespace RestoAPP.Models
 {
     public class MENSAJE_Entity
     {

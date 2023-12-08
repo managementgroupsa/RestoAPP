@@ -7,7 +7,7 @@
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              mc:Ignorable="d"
-             x:Class="Ventas.Views.LoginPage"
+             x:Class="RestoAPP.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <ScrollView x:Name="ScrollView">

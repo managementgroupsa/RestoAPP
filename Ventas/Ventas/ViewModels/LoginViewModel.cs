@@ -1,14 +1,14 @@
-﻿using Ventas.Services.Routing;
+﻿using RestoAPP.Services.Routing;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
-using Ventas.Views;
+using RestoAPP.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Splat;
 
-namespace Ventas.ViewModels
+namespace RestoAPP.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {

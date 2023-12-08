@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ventas.Models
+namespace RestoAPP.Models
 {
     public class Item
     {

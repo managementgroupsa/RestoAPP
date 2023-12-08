@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Ventas.Services.Routing
+namespace RestoAPP.Services.Routing
 {
     public class ShellRoutingService : IRoutingService
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ventas.Models
+namespace RestoAPP.Models
 {
     public class VTD_NOTACREDITO_Entity
     {

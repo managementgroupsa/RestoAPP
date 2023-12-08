@@ -3,12 +3,12 @@
              xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"     
              xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
-             x:Class="Ventas.Views.TipoCambioPage"
+             x:Class="RestoAPP.Views.TipoCambioPage"
              xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              
-             xmlns:vm="clr-namespace:Ventas.ViewModels"
+             xmlns:vm="clr-namespace:RestoAPP.ViewModels"
              xmlns:sfPager="clr-namespace:Syncfusion.SfDataGrid.XForms.DataPager;assembly=Syncfusion.SfDataGrid.XForms" 
              Title="{Binding Title}">
 

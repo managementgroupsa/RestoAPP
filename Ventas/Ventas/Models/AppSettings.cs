@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ventas.Models
+namespace RestoAPP.Models
 {
     public class AppSettings
     {

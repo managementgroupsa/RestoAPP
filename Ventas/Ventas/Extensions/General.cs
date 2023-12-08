@@ -6,7 +6,7 @@ using System.Reflection;
 using Xamarin.Forms;
 using System.Text;
 
-namespace Ventas.Extensions
+namespace RestoAPP.Extensions
 {
 
     public class Token

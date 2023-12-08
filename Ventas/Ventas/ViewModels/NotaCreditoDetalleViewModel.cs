@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Ventas.ViewModels
+namespace RestoAPP.ViewModels
 {
     internal class NotaCreditoDetalleViewModel : BaseViewModel
     {

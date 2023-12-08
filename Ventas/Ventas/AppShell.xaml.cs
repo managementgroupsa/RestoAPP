@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ventas.ViewModels;
-using Ventas.Views;
+using RestoAPP.ViewModels;
+using RestoAPP.Views;
 using Xamarin.Forms;
 using System.Windows.Input;
 using Xamarin.Essentials;
 
-namespace Ventas
+namespace RestoAPP
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {

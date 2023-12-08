@@ -4,8 +4,8 @@
              xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:picker="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-             x:Class="Ventas.Views.ClientesDetallePage"
-             xmlns:vm="clr-namespace:Ventas.ViewModels"
+             x:Class="RestoAPP.Views.ClientesDetallePage"
+             xmlns:vm="clr-namespace:RestoAPP.ViewModels"
              Title="{Binding Title}">
 
     <ContentPage.BindingContext>

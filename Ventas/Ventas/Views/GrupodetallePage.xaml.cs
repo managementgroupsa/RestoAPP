@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ventas.Extensions;
-using Ventas.Models;
+using RestoAPP.Extensions;
+using RestoAPP.Models;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Ventas.Views
+namespace RestoAPP.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GrupodetallePage : ContentPage

@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace Ventas.iOS
+namespace RestoAPP.iOS
 {
     public class Application
     {

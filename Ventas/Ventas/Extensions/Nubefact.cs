@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
-using Ventas.Models;
+using RestoAPP.Models;
 using Newtonsoft.Json;
 
 using System.Data;
 using System.Net;
 using System.Text;
 
-namespace Ventas.Extensions
+namespace RestoAPP.Extensions
 {
     public class Nubefact
     {

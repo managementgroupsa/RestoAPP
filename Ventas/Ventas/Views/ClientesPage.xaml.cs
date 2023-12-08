@@ -2,14 +2,14 @@
 using Syncfusion.SfDataGrid.XForms;
 using System;
 using System.Data;
-using Ventas.Extensions;
-using Ventas.Models;
-using Ventas.ViewModels;
+using RestoAPP.Extensions;
+using RestoAPP.Models;
+using RestoAPP.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 
-namespace Ventas.Views
+namespace RestoAPP.Views
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]

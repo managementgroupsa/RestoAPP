@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using System.Data;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Ventas.Extensions;
-using Ventas.Models;
-using Ventas.ViewModels;
+using RestoAPP.Extensions;
+using RestoAPP.Models;
+using RestoAPP.ViewModels;
 using Syncfusion.SfDataGrid.XForms;
 using Newtonsoft.Json;
 
@@ -16,7 +16,7 @@ using Syncfusion.Pdf.Graphics;
 using System.IO;
 using Xamarin.Essentials;
 
-namespace Ventas.Views
+namespace RestoAPP.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VentasPage : ContentPage

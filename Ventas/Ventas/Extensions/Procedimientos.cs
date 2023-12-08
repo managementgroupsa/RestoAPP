@@ -1,14 +1,14 @@
 ﻿using System;
-using Ventas.Models;
+using RestoAPP.Models;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using Xamarin.Forms;
-using Ventas.Views;
+using RestoAPP.Views;
 using System.Threading;
 using System.Reflection;
 
-namespace Ventas.Extensions
+namespace RestoAPP.Extensions
 {
     class ProcedimientosAPI
     {

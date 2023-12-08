@@ -6,13 +6,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Ventas.Extensions;
-using Ventas.Models;
+using RestoAPP.Extensions;
+using RestoAPP.Models;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Ventas.Views
+namespace RestoAPP.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotaCreditoDetallePage : ContentPage

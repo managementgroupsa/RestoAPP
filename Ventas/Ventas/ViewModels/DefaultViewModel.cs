@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Text;
-using Ventas.Extensions;
-using Ventas.Models;
-using Ventas.Views;
+using RestoAPP.Extensions;
+using RestoAPP.Models;
+using RestoAPP.Views;
 using Xamarin.Forms;
 using ZXing.Aztec.Internal;
 
-namespace Ventas.ViewModels
+namespace RestoAPP.ViewModels
 {
     internal class DefaultViewModel : INotifyPropertyChanged
     {

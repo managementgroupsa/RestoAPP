@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using System.Data;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Ventas.Extensions;
-using Ventas.Models;
-using Ventas.ViewModels;
+using RestoAPP.Extensions;
+using RestoAPP.Models;
+using RestoAPP.ViewModels;
 using Syncfusion.SfDataGrid.XForms;
 using Newtonsoft.Json;
 
 
-namespace Ventas.Views
+namespace RestoAPP.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotaCreditoPage : ContentPage

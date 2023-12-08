@@ -1,19 +1,19 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using Ventas.Extensions;
-using Ventas.Models;
-using Ventas.ViewModels;
+using RestoAPP.Extensions;
+using RestoAPP.Models;
+using RestoAPP.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Splat;
-using Ventas.Services.Routing;
+using RestoAPP.Services.Routing;
 using System.Linq;
 using System.IO;
 using System.Reflection;
 
-namespace Ventas.Views
+namespace RestoAPP.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
@@ -31,7 +31,7 @@ namespace Ventas.Views
             InitializeComponent();
 
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(LoginPage)).Assembly;
-            Stream stream = assembly.GetManifestResourceStream("Ventas.appsettings.json");
+            Stream stream = assembly.GetManifestResourceStream("RestoAPP.appsettings.json");
             var steamreader = new StreamReader(stream).ReadToEnd();
 
             List<AppSettings> list =JsonConvert.DeserializeObject<List<AppSettings>>(steamreader);

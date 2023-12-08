@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Ventas.Models
+namespace RestoAPP.Models
 {
     #region Comprobante
 

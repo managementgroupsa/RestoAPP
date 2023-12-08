@@ -2,7 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ventas.Services.Identity
+namespace RestoAPP.Services.Identity
 {
 
     interface IIdentityService

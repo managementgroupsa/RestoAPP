@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
-using Ventas.Models;
+using RestoAPP.Models;
 using Xamarin.Forms;
 using System.Data;
-using Ventas.Extensions;
+using RestoAPP.Extensions;
 using System;
 using System.Collections.ObjectModel;
 
-namespace Ventas.ViewModels
+namespace RestoAPP.ViewModels
 {
     internal class VentasViewModel:BaseViewModel
     {

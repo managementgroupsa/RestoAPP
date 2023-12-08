@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Ventas.Models
+namespace RestoAPP.Models
 {
     public class DIA_Entity
     {

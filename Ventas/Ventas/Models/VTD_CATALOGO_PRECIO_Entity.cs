@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 
-namespace Ventas.Models
+namespace RestoAPP.Models
 {
     public class VTD_CATALOGO_PRECIO_Entity
     {

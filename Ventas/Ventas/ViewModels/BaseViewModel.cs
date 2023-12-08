@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Ventas.Models;
-using Ventas.Services;
+using RestoAPP.Models;
+using RestoAPP.Services;
 using Xamarin.Forms;
 
-namespace Ventas.ViewModels
+namespace RestoAPP.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

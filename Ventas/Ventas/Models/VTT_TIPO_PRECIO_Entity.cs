@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Ventas.Models
+namespace RestoAPP.Models
 {
     public class VTT_TIPO_PRECIO_Entity
     {

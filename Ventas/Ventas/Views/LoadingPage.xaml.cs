@@ -1,4 +1,4 @@
-﻿using Ventas.ViewModels;
+﻿using RestoAPP.ViewModels;
 using Splat;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Ventas.Views
+namespace RestoAPP.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoadingPage : ContentPage

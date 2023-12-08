@@ -1,15 +1,15 @@
-﻿using Ventas.Services.Identity;
-using Ventas.Services.Routing;
+﻿using RestoAPP.Services.Identity;
+using RestoAPP.Services.Routing;
 using Splat;
 using System;
-using Ventas.Services;
-using Ventas.Views;
+using RestoAPP.Services;
+using RestoAPP.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Ventas.ViewModels;
+using RestoAPP.ViewModels;
 
 
-namespace Ventas
+namespace RestoAPP
 {
     public partial class App : Application
     {

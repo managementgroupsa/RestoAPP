@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ventas.ViewModels
+namespace RestoAPP.ViewModels
 {
     internal class VentasDetalleCuotasPage : BaseViewModel
     {
