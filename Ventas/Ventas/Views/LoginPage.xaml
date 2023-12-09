@@ -15,12 +15,12 @@
 
                 <StackLayout x:Name="LayaoutLogeo" IsVisible="true">
                     <StackLayout Orientation="Vertical" >
-                        <Frame BackgroundColor="DarkRed" Padding="10" CornerRadius="0">
-                            <Label Text="Modulo de Ventas" HorizontalTextAlignment="Center" TextColor="White" FontSize="Medium"/>
+                        <Frame BackgroundColor="{StaticResource Primary}"     Padding="10" CornerRadius="0">
+                            <Label Text="RESTO-PLUS: Toma de Pedidos" HorizontalTextAlignment="Start" TextColor="White" FontSize="Medium"/>
                         </Frame>
 
 
-                        <Image Source="logo.jpg" WidthRequest="40" HeightRequest="40" Margin="0,50,0,30"/>
+                        <Image Source="logodennys.jpg" WidthRequest="100" HeightRequest="100" Margin="0,50,0,30"/>
 
                         <StackLayout Padding="30,20">
 
@@ -40,27 +40,27 @@
                     <StackLayout Padding="30,20">
 
 
-                        <button:SfButton x:Name="btnPrincipa" Text="Ingresar" Clicked="btnPrincipal_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                        <button:SfButton x:Name="btnPrincipa" Text="Ingresar" Clicked="btnPrincipal_Clicked" BackgroundColor="peru" BorderColor="Gray"
                                      HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" CornerRadius="10" HorizontalOptions="FillAndExpand" />
 
                     </StackLayout>
 
                     <StackLayout Padding="30,80" Orientation="Vertical" >
-                        <Label Text="Designed by © 2022 MANAGEMENT GROUP S.A." HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Text="Designed by © 2023 CODESICORP S.A.C." HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                         <Label Text="Version 1.0" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                     </StackLayout>
                 </StackLayout>
 
                 <StackLayout x:Name="LayaoutEmpresas" IsVisible="false">
 
-                    <Frame BackgroundColor="DarkRed" Padding="10" CornerRadius="0">
-                        <Label Text="Modulo de Ventas" HorizontalTextAlignment="Center" TextColor="White" FontSize="Medium"/>
+                    <Frame BackgroundColor="{StaticResource Primary}"  Padding="10" CornerRadius="0">
+                        <Label Text="RESTO-PLUS: Toma de Pedidos" HorizontalTextAlignment="Start" TextColor="White" FontSize="Medium"/>
                     </Frame>
-                    
+
                     <StackLayout Orientation="Vertical" >
                         <StackLayout  Padding="30,20">
 
-                            <Image Source="logo.jpg" WidthRequest="40" HeightRequest="40" Margin="0,50,0,30"/>
+                            <Image Source="logodennys.jpg" WidthRequest="100" HeightRequest="100" Margin="0,50,0,30"/>
 
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -80,7 +80,7 @@
                                      ShowColumnHeader="True"
                                      ShowFooter="True"
                                      OkButtonClicked="tdbcEmpresas_OkButtonClicked"        
-                                     HeaderBackgroundColor="DarkRed"
+                                     HeaderBackgroundColor="{StaticResource Primary}"
                                      UnSelectedItemTextColor="Black"
                                      SelectedItemTextColor="DarkBlue"
                                      SelectedItemFontSize="Default"
@@ -89,9 +89,9 @@
                                      ColumnHeaderBackgroundColor="GhostWhite"
                                      CancelButtonTextColor="White"
                                      BackgroundColor="GhostWhite"
-                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonBackgroundColor="Peru" 
                                      OKButtonTextColor="White"
-                                     CancelButtonBackgroundColor="DarkRed"
+                                     CancelButtonBackgroundColor="Gray"
                                          PickerHeight="550" 
                                      PickerMode="Dialog"/>
 
@@ -107,7 +107,7 @@
                                      ShowColumnHeader="True"
                                      ShowFooter="True"
                                      OkButtonClicked="tdbcAnios_OkButtonClicked"        
-                                     HeaderBackgroundColor="DarkRed"
+                                     HeaderBackgroundColor="{StaticResource Primary}"
                                      UnSelectedItemTextColor="Black"
                                      SelectedItemTextColor="DarkBlue"
                                      SelectedItemFontSize="Default"
@@ -116,9 +116,9 @@
                                      ColumnHeaderBackgroundColor="GhostWhite"
                                      CancelButtonTextColor="White"
                                      BackgroundColor="GhostWhite"
-                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonBackgroundColor="Peru"
                                      OKButtonTextColor="White"
-                                     CancelButtonBackgroundColor="DarkRed"
+                                     CancelButtonBackgroundColor="Gray"
                                      PickerHeight="550" 
                                      PickerMode="Dialog"/>
                                 <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="0" Hint="Año" FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" >
@@ -133,7 +133,7 @@
                                      ShowColumnHeader="True"
                                      ShowFooter="True"
                                      OkButtonClicked="tdbcPuntosVenta_OkButtonClicked"        
-                                     HeaderBackgroundColor="DarkRed"
+                                     HeaderBackgroundColor="{StaticResource Primary}"
                                      UnSelectedItemTextColor="Black"
                                      SelectedItemTextColor="DarkBlue"
                                      SelectedItemFontSize="Default"
@@ -142,9 +142,9 @@
                                      ColumnHeaderBackgroundColor="GhostWhite"
                                      CancelButtonTextColor="White"
                                      BackgroundColor="GhostWhite"
-                                     OKButtonBackgroundColor="DarkGreen"
+                                     OKButtonBackgroundColor="Peru"
                                      OKButtonTextColor="White"
-                                     CancelButtonBackgroundColor="DarkRed"
+                                     CancelButtonBackgroundColor="Gray"
                                      PickerHeight="550" 
                                      PickerMode="Dialog"/>
                                 <inputLayout:SfTextInputLayout Grid.Row="2" Grid.Column="0" Hint="Punto de Venta"  FocusedColor="#0450C2" ContainerType="Outlined" ContainerBackgroundColor="White" >
@@ -159,15 +159,15 @@
 
                         <StackLayout Padding="30,20" Orientation="Horizontal"  >
 
-                            <button:SfButton x:Name="btnPrincipal_Empresas" Text="Ingresar" Clicked="btnPrincipal_Empresas_Clicked" BackgroundColor="DarkGreen" BorderColor="Gray"
+                            <button:SfButton x:Name="btnPrincipal_Empresas" Text="Ingresar" Clicked="btnPrincipal_Empresas_Clicked" BackgroundColor="peru" BorderColor="Gray"
                                      HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" CornerRadius="10" HorizontalOptions="FillAndExpand" />
 
-                            <button:SfButton x:Name="btnCancelar_Empresas" Text="Cancelar" Clicked="btnCancelar_Empresas_Clicked" BackgroundColor="DarkRed" BorderColor="Gray"
+                            <button:SfButton x:Name="btnCancelar_Empresas" Text="Cancelar" Clicked="btnCancelar_Empresas_Clicked" BackgroundColor="gray" BorderColor="Gray"
                                      HasShadow="True" BorderWidth="1" VerticalOptions="CenterAndExpand" CornerRadius="10" HorizontalOptions="FillAndExpand" />
                         </StackLayout>
 
                         <StackLayout Padding="30,50" Orientation="Vertical" >
-                            <Label Text="Designed by © 2022 MANAGEMENT GROUP S.A." HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            <Label Text="Designed by © 2023 CODESICORP S.A.C." HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                             <Label Text="Version 1.0" HorizontalTextAlignment="Center" TextColor="Black" FontSize="Small" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                         </StackLayout>
 

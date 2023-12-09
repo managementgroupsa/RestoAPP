@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="RestoAPP.Views.PedidosPage"
+             xmlns:vm="clr-namespace:RestoAPP.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:PedidosViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+
+        <RelativeLayout>
+            <syncfusion:SfListView x:Name="listView" 
+                ItemsSource="{Binding TableInfo}" 
+                Padding="0,5,0,5"
+                SelectionMode="None" 
+                BackgroundColor="#F0F0F0"
+                ItemSpacing="10,5,10,5"
+                ItemSize="{OnPlatform Android={OnIdiom Phone=80, Tablet=100}, iOS={OnIdiom Phone=100, Tablet= 90}, UWP={OnIdiom Phone=120, Tablet=150, Desktop=150}, macOS=105,WPF=150}"
+                SelectionBackgroundColor="#ECECEC"
+                TapCommand="{Binding ItemTappedCommand}"
+                >
+
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White" Padding="1"  CornerRadius="2"    HasShadow="{OnPlatform Android=true, iOS=false, UWP=true, WPF=true}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{OnPlatform Android={OnIdiom Phone=0.25*, Tablet=0.25*}, iOS={OnIdiom Phone=0.35*, Tablet=0.15*}, UWP={OnIdiom Desktop=auto, Phone=auto, Tablet=0.55*}, macOS=0.15*, WPF=auto}" />
+                                    <ColumnDefinition Width="{OnPlatform Android={OnIdiom Phone=0.65*, Tablet=0.75*}, iOS={OnIdiom Phone=0.65*, Tablet=0.85*}, UWP={OnIdiom Desktop=*, Phone=*, Tablet=0.15*}, macOS=*, WPF=*}" />
+                                </Grid.ColumnDefinitions>
+                                
+                                <Image Source="comedor.jpg" HorizontalOptions="Center"  VerticalOptions="Center"  HeightRequest="50" WidthRequest="50" Aspect="AspectFill"/>
+
+                                <StackLayout Grid.Column="1" Padding="10,0,0,0">
+                                    <StackLayout.VerticalOptions>
+                                        <OnPlatform x:TypeArguments="LayoutOptions">
+                                            <On Platform="macOS" Value="CenterAndExpand"/>
+                                        </OnPlatform>
+                                    </StackLayout.VerticalOptions>
+
+                                    <Label Text="{Binding Mes_cDescripcion}" LineBreakMode="WordWrap" FontAttributes="Bold"
+                                           FontSize="{OnPlatform Android={OnIdiom Phone=18, Tablet=22}, iOS={OnIdiom Phone=18, Tablet=22}, UWP={OnIdiom Phone=16, Tablet=26, Desktop=26}, macOS=22, WPF=26}" />
+
+                                    <Label Text="{Binding Ent_cPersona}" LineBreakMode="WordWrap"/>
+                                    <Label Text="{Binding Res_cNummov}" LineBreakMode="WordWrap" IsVisible="false"/>
+                                    <Label Text="{Binding Ped_cNummov}" LineBreakMode="WordWrap" IsVisible="false"/>
+
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+                
+
+            </syncfusion:SfListView>
+            
+        </RelativeLayout>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

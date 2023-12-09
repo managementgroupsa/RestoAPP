@@ -129,8 +129,33 @@ namespace RestoAPP.Extensions
 
         #endregion
 
+        #region API-NEGOCIO
 
+        public static string GetPostBuscarMesas(Login_Entity oEntidad)
+        {
+            return GetPostResultString(cURL + "/LOGIN/ValidaIngreso", oEntidad);
+        }
 
+        public static string GetPostGrabarPedido(PEDIDO_Entity oEntidad)
+        {
+
+            return GetPostResultString(cURL + "/GENERAL/GrabarPedido", oEntidad);
+        }
+        
+        public static string BuscarPedidosPorUsuario(VTD_RESTO_APERTURA_PEDIDO_Entity oEntidad)
+        {
+
+            return GetPostResultString(cURL + "/VTD_RESTO_APERTURA_PEDIDO/BuscarPedidosPorUsuario", oEntidad);
+        }
+
+        public static string BuscarMesasPorUsuario(VTM_RESTO_MESAS_Entity oEntidad)
+        {
+
+            return GetPostResultString(cURL + "/VTM_RESTO_MESAS/BuscarMesasPorUsuario", oEntidad);
+        }
+        
+
+        #endregion
 
         #region API-Tabla
 

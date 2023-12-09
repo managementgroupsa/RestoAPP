@@ -31,7 +31,7 @@ namespace RestoAPP.Views
             InitializeComponent();
 
             var assembly = IntrospectionExtensions.GetTypeInfo(typeof(LoginPage)).Assembly;
-            Stream stream = assembly.GetManifestResourceStream("RestoAPP.appsettings.json");
+            Stream stream = assembly.GetManifestResourceStream("RestoPLUS.appsettings.json");
             var steamreader = new StreamReader(stream).ReadToEnd();
 
             List<AppSettings> list =JsonConvert.DeserializeObject<List<AppSettings>>(steamreader);
@@ -49,8 +49,8 @@ namespace RestoAPP.Views
 
 
 
-            txtUsuario.Text = "ADVISOR";
-            txtContraseña.Text = "ADVISOR";
+            txtUsuario.Text = "DEMO";
+            txtContraseña.Text = "DEMO";
         }
 
         private async void btnPrincipal_Clicked(object sender, EventArgs e)

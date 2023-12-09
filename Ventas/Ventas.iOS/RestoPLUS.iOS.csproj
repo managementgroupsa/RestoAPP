@@ -203,9 +203,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Ventas\RestoAPP.csproj">
+    <ProjectReference Include="..\Ventas\RestoPLUS.csproj">
       <Project>{CB67C282-CC4B-4745-99B0-A51B7E02A493}</Project>
-      <Name>RestoAPP</Name>
+      <Name>RestoPLUS</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

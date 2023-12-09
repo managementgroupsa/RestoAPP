@@ -91,6 +91,9 @@
     <Reference Include="Syncfusion.SfDataGrid.XForms">
       <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Xamarin\20.1.0.55\Xamarin\lib\pcl\Syncfusion.SfDataGrid.XForms.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfListView.XForms">
+      <HintPath>C:\Users\mlopez\.nuget\packages\syncfusion.xamarin.sflistview\20.2.0.36\lib\netstandard2.0\Syncfusion.SfListView.XForms.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.SfNumericTextBox.XForms">
       <HintPath>C:\Program Files (x86)\Syncfusion\Essential Studio\Xamarin\20.1.0.55\Xamarin\lib\pcl\Syncfusion.SfNumericTextBox.XForms.dll</HintPath>
     </Reference>
@@ -119,6 +122,9 @@
     <EmbeddedResource Update="Views\LoadingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\PedidosPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -130,6 +136,9 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PedidosDetallePage.xaml.cs">
+      <DependentUpon>PedidosDetallePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="RestoAPP.Views.PedidosDetallePage"
+             xmlns:vm="clr-namespace:RestoAPP.ViewModels"
+             xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"                         
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:PedidosDetalleViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+
+        <StackLayout Padding="10,10"  Orientation="Vertical" >
+
+            <ScrollView x:Name="ScrollView">
+
+                <StackLayout>
+
+                    <datagrid:SfDataGrid 
+                                x:Name="grdDetalle"
+                                AutoGenerateColumns="False"
+                                AllowResizingColumn="True"
+                                AutoGenerateColumnsModeForCustomType="Both"
+                                SelectionChanged="grdDetalle_SelectionChanged"
+                                QueryRowHeight="grdDetalle_QueryRowHeight"
+                                SelectionMode="Single">
+
+                        <datagrid:SfDataGrid.GridStyle>
+                                    <datagrid:DefaultStyle HeaderBackgroundColor="{StaticResource Primary}"
+                                                               HeaderForegroundColor="White"
+                                                               RowBackgroundColor="White" 
+                                                               RowForegroundColor="Black"
+                                                               SelectionBackgroundColor="LightSkyBlue" 
+                                                               SelectionForegroundColor="White"
+                                                               CaptionSummaryRowBackgroundColor="Black" 
+                                                               CaptionSummaryRowForegroundColor="White"
+                                                               GridCellBorderColor="{Binding BorderColor}" 
+                                                               LoadMoreViewBackgroundColor="Gray"
+                                                               LoadMoreViewForegroundColor="Black" 
+                                                               AlternatingRowColor="PapayaWhip"/>
+                        </datagrid:SfDataGrid.GridStyle>
+
+                        <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                            <datagrid:GridTextColumn HeaderText="Item" Width="40"  TextAlignment="Start"  MappingName="Ped_nItem" />
+                            <datagrid:GridNumericColumn HeaderText="Cant." Width="50" TextAlignment="End" MappingName="Ped_nCantidad"  />
+                    
+                            <datagrid:GridTextColumn HeaderText="Descripción" Width="200" TextAlignment="Start" MappingName="Cab_cDescripLarga" />
+                            <datagrid:GridTextColumn HeaderText="Comentario" Width="100" TextAlignment="Start" MappingName="Ped_cComentario" />
+                            <datagrid:GridTextColumn HeaderText="Codigo" Width="50" TextAlignment="Center" MappingName="Cab_cCatalogo"  />
+                        </datagrid:SfDataGrid.Columns>
+                        
+                    </datagrid:SfDataGrid>
+                </StackLayout>
+            </ScrollView>
+
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

@@ -10,7 +10,7 @@ namespace RestoAPP.ViewModels
         public AboutViewModel()
         {
             Title = "Acerca de..";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("http://www.mgsa.com.pe"));
+            OpenWebCommand = new Command(async () => await Browser.OpenAsync("http://www.codesicorp.com"));
         }
 
         public ICommand OpenWebCommand { get; }

@@ -21,17 +21,19 @@ namespace RestoAPP
             
             Application.Current.Properties["Usu_cCodUsuario"] = "";
             Application.Current.Properties["Usu_cClave"] = "";
-            
 
             Application.Current.Properties["Pvt_cCodigo"] = "";
             Application.Current.Properties["Pvt_cDescripcion"] = "";
-            Application.Current.Properties["Opcion"] = "";
+
+            Application.Current.Properties["Mes_cCodigo"] = "";
+            Application.Current.Properties["Mes_cDescripcion"] = "";
             Application.Current.Properties["Ent_cCodEntidad"] = "";
-            Application.Current.Properties["Dvm_cNumMov"] = "";
-            Application.Current.Properties["Aca_cCategoria"] = "";
-            Application.Current.Properties["Gru_cGrupo"] = "";
-            Application.Current.Properties["Cla_cClase"] = "";
-            Application.Current.Properties["Fam_cFamilia"] = "";
+            Application.Current.Properties["Ent_cPersona"] = "";
+
+
+            Application.Current.Properties["Opcion"] = "";
+            Application.Current.Properties["Ped_cNummov"] ="";
+            Application.Current.Properties["Res_cNummov"] = "";
 
             Application.Current.Properties["RepuestaBusqueda"] = "";
             Application.Current.Properties["Cab_cCatalogo"] = "";
@@ -44,33 +46,9 @@ namespace RestoAPP
             Application.Current.Properties["Soft_cCodSoft"] = "005";
             Application.Current.Properties["Tca_dFecha"] = "";
 
-            Application.Current.Properties["Dvm_cTipoDoc"] = "";
-            Application.Current.Properties["Dvm_cSerieDoc"] = "";
-
-            Application.Current.Properties["Cab_cTipoBS"] = "";
-            Application.Current.Properties["Dvm_cCondicion"] = "";
-
-            Application.Current.Properties["Dvm_cNacExt"] = "";
-            Application.Current.Properties["FormaPago"] = "";
-            Application.Current.Properties["Modalidad"] = "";
-
             Application.Current.Properties["Dvd_nItem"] = "";
-            Application.Current.Properties["Ccu_nCorrel"] = "";
-
-            Application.Current.Properties["RepuestaCuota"] = "";
-            Application.Current.Properties["Ccu_nMontoCuota"] = "";
-            Application.Current.Properties["Ccu_dFechaVenc"] = "";
-
-            Application.Current.Properties["En_nMail"] = "";
-
-
 
             Application.Current.Properties["TOTAL"] = "";
-            Application.Current.Properties["TOTALCUOTAS"] = "";
-            Application.Current.Properties["FECHACUOTA"] = "";
-            Application.Current.Properties["ValidaSunat"] = "";
-            Application.Current.Properties["Tpr_cCodigo"] = "";
-            Application.Current.Properties["Cpr_cCorrelativo"] = "";
 
             Application.Current.Properties["Token"] = "";
             Application.Current.Properties["TiempoInactividad"] = DateTime.Now; ;
@@ -88,10 +66,10 @@ namespace RestoAPP
             
 
             // Ruteo de primer nivel
-            //Routing.RegisterRoute(nameof(CategoriaPage), typeof(CategoriaPage));
+            Routing.RegisterRoute(nameof(PedidosPage), typeof(PedidosPage));
             
             // Ruteo de segundo nivel
-            //Routing.RegisterRoute(nameof(ClientesDetallePage), typeof(ClientesDetallePage));
+            Routing.RegisterRoute(nameof(PedidosDetallePage ), typeof(PedidosDetallePage));
             
 
             // Ruteo de tercer nivel
