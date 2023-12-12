@@ -21,10 +21,12 @@ namespace RestoAPP.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PedidosDetallePage : ContentPage
     {
-        private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> ItemsNew;
+        private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> ItemsCatalogo;
         private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> pedidos;
+        
 
         DataTable dtDetalle = new DataTable();
+        DataTable dtCatalogo= new DataTable();
         DataTable dtPedidos= new DataTable();
         
         string Ped_cNummov = Application.Current.Properties["Ped_cNummov"] as string;
@@ -72,6 +74,11 @@ namespace RestoAPP.Views
                 LlenaGrillaPedido();
 
                 pedidos = GetPedidosFromApi(dtDetalle);
+
+                LlenaCatalogo();
+
+                ItemsCatalogo = GetProductosFromApi(dtCatalogo);
+                
             }
 
             if (cOpcion == Opciones.Editar)
@@ -79,6 +86,10 @@ namespace RestoAPP.Views
                 LlenaGrillaPedido();
 
                 pedidos = GetPedidosFromApi(dtDetalle);
+
+                LlenaCatalogo();
+
+                ItemsCatalogo = GetProductosFromApi(dtCatalogo);
             }
 
             listView.ItemsSource = pedidos;
@@ -86,13 +97,8 @@ namespace RestoAPP.Views
             //-------------------------------------------
 
             // Inicializa tu lista de productos y asígnala al origen de datos del SfListView
-            ItemsNew = new ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity>();
             
-
-            // Agrega algunos productos ficticios para propósitos de ejemplo
-            ItemsNew.Add(new VTD_RESTO_APERTURA_PEDIDO_Entity { Cab_cCatalogo = "000008", Cab_cDescripLarga = "PRODUCTO XXX" , Ped_nCantidad =1 });
-            ItemsNew.Add(new VTD_RESTO_APERTURA_PEDIDO_Entity { Cab_cCatalogo = "000009", Cab_cDescripLarga = "PRODUCTO YYY", Ped_nCantidad = 1 });
-            ItemsNew.Add(new VTD_RESTO_APERTURA_PEDIDO_Entity { Cab_cCatalogo = "000010", Cab_cDescripLarga = "PRODUCTO ZZZ", Ped_nCantidad = 1 });
+            
 
             productosListView.ItemDoubleTapped  += OnItemDoubleTappedEnProductosListView;
             
@@ -100,6 +106,45 @@ namespace RestoAPP.Views
 
         }
 
+        private void LlenaCatalogo()
+        {
+            try
+            {
+                VTD_RESTO_APERTURA_PEDIDO_Entity oEntidad = new VTD_RESTO_APERTURA_PEDIDO_Entity();
+
+                oEntidad.Accion = "BUSCARCATALOGO";
+                oEntidad.Emp_cCodigo = Emp_cCodigo;
+
+                string result = ProcedimientosAPI.BuscarCatalogo(oEntidad);
+
+                dtCatalogo = JsonConvert.DeserializeObject<DataTable>(result);
+                dtCatalogo.TableName = "Catalogo";
+                // grdDetalle.ItemsSource = dtDetalle;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> GetProductosFromApi(DataTable dt)
+        {
+            var collection = new ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity>();
+
+            foreach (System.Data.DataRow row in dt.Rows)
+            {
+                var producto = new VTD_RESTO_APERTURA_PEDIDO_Entity
+                {
+                    Cab_cCatalogo = row["Cab_cCatalogo"].ToString(),
+                    Cab_cDescripLarga = row["Cab_cDescripLarga"].ToString(),
+                    Ped_nCantidad = Convert.ToInt16(row["Ped_nCantidad"])
+                };
+
+                collection.Add(producto);
+            }
+
+            return collection;
+        }
 
         private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> GetPedidosFromApi(DataTable dt)
         {
@@ -194,7 +239,7 @@ namespace RestoAPP.Views
 
         private  void OnAgregarClicked(object sender, EventArgs e)
         {
-            productosListView.ItemsSource = ItemsNew; // Establece la lista de productos en el segundo SfListView
+            productosListView.ItemsSource = ItemsCatalogo; // Establece la lista de productos en el segundo SfListView
             filtroEntry.Text = string.Empty; // Limpia el filtro
 
             ScrollViewBusqueda.IsVisible = true; 
@@ -210,7 +255,7 @@ namespace RestoAPP.Views
         {
             // Aplica el filtro a la lista de productos en el segundo SfListView
             var filtro = e.NewTextValue.ToLower();
-            var productosFiltrados = ItemsNew.Where(p => p.Cab_cCatalogo.ToLower().Contains(filtro) || p.Cab_cDescripLarga.ToLower().Contains(filtro)).ToList();
+            var productosFiltrados = ItemsCatalogo.Where(p => p.Cab_cCatalogo.ToLower().Contains(filtro) || p.Cab_cDescripLarga.ToLower().Contains(filtro)).ToList();
             productosListView.ItemsSource = productosFiltrados;
         }
 
@@ -302,7 +347,7 @@ namespace RestoAPP.Views
                 string result = ProcedimientosAPI.BuscarPedidosPorUsuario(oEntidad);
 
                 dtDetalle = JsonConvert.DeserializeObject<DataTable>(result);
-                dtDetalle.TableName = Title;
+                dtDetalle.TableName = "Pedido";
                // grdDetalle.ItemsSource = dtDetalle;
             }
             catch (Exception ex)

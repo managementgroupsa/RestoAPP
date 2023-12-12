@@ -5,8 +5,8 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <Label Text="¿Desea quitar el producto de la lista?" />
-            <Button Text="Sí" Clicked="OnSiClicked" />
-            <Button Text="No" Clicked="OnNoClicked" />
+            <Button Text="Sí" Clicked="OnSiClicked" BackgroundColor="Green" />
+            <Button Text="No" Clicked="OnNoClicked" BackgroundColor="DarkRed" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

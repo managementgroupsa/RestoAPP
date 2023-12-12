@@ -153,8 +153,12 @@ namespace RestoAPP.Extensions
 
             return GetPostResultString(cURL + "/VTM_RESTO_MESAS/BuscarMesasPorUsuario", oEntidad);
         }
-        
 
+        public static string BuscarCatalogo(VTD_RESTO_APERTURA_PEDIDO_Entity oEntidad)
+        {
+
+            return GetPostResultString(cURL + "/VTD_RESTO_APERTURA_PEDIDO/BuscarCatalogo", oEntidad);
+        }
         #endregion
 
         #region API-Tabla
