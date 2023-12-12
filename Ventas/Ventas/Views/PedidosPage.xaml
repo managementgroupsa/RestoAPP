@@ -17,7 +17,7 @@
                 ItemsSource="{Binding TableInfo}" 
                 Padding="0,5,0,5"
                 SelectionMode="None" 
-                BackgroundColor="#F0F0F0"
+                BackgroundColor="AntiqueWhite"
                 ItemSpacing="10,5,10,5"
                 ItemSize="{OnPlatform Android={OnIdiom Phone=80, Tablet=100}, iOS={OnIdiom Phone=100, Tablet= 90}, UWP={OnIdiom Phone=120, Tablet=150, Desktop=150}, macOS=105,WPF=150}"
                 SelectionBackgroundColor="#ECECEC"
@@ -26,7 +26,7 @@
 
                 <syncfusion:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BackgroundColor="White" Padding="1"  CornerRadius="2"    HasShadow="{OnPlatform Android=true, iOS=false, UWP=true, WPF=true}">
+                        <Frame BackgroundColor="White" Padding="1"  CornerRadius="5"    HasShadow="{OnPlatform Android=true, iOS=false, UWP=true, WPF=true}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="{OnPlatform Android={OnIdiom Phone=0.25*, Tablet=0.25*}, iOS={OnIdiom Phone=0.35*, Tablet=0.15*}, UWP={OnIdiom Desktop=auto, Phone=auto, Tablet=0.55*}, macOS=0.15*, WPF=auto}" />

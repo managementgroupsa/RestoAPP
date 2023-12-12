@@ -9,15 +9,22 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json.Converters;
+using RestoAPP.ViewModels;
+using Syncfusion.ListView.XForms;
+using Syncfusion.SfRangeSlider.XForms;
 
 namespace RestoAPP.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PedidosDetallePage : ContentPage
     {
+        private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> pedidos;
+
         DataTable dtDetalle = new DataTable();
         DataTable dtPedidos= new DataTable();
         
@@ -51,25 +58,114 @@ namespace RestoAPP.Views
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
 
-            dtDetalle = Propiedades.CreateEntityToDataTable(typeof(VTD_RESTO_APERTURA_Entity), Title);
-            dtPedidos = Propiedades.CreateEntityToDataTable(typeof(VTD_RESTO_APERTURA_PEDIDO_Entity), Title);
+            
+
+            //''dtDetalle = Propiedades.CreateEntityToDataTable(typeof(VTD_RESTO_APERTURA_Entity), Title);
+            //''dtPedidos = Propiedades.CreateEntityToDataTable(typeof(VTD_RESTO_APERTURA_PEDIDO_Entity), Title);
+
+
+            
+
+            
 
             if (cOpcion == Opciones.Nuevo)
             {
                 LimpiaDatos();
+
+                LlenaGrillaPedido();
+
+                pedidos = GetPedidosFromApi(dtDetalle);
             }
 
             if (cOpcion == Opciones.Editar)
             {
                 LlenaGrillaPedido();
+
+                pedidos = GetPedidosFromApi(dtDetalle);
             }
+
+            listView.ItemsSource = pedidos;
+        }
+
+
+        private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> GetPedidosFromApi(DataTable dt)
+        {
+            var collection = new ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity>();
+
+            foreach (System.Data.DataRow row in dt.Rows)
+            {
+                var persona = new VTD_RESTO_APERTURA_PEDIDO_Entity
+                {
+                    Ped_nItem = Convert.ToInt32(row["Ped_nItem"]),
+                    Ped_nCantidad = Convert.ToInt32(row["Ped_nCantidad"]),
+                    Cab_cDescripLarga = row["Cab_cDescripLarga"].ToString(),
+                    Ped_cComentario = row["Ped_cComentario"].ToString(),
+                    Cab_cCatalogo = row["Cab_cCatalogo"].ToString()
+                };
+
+                collection.Add(persona);
+            }
+
+            return collection;
+        }
+
+
+        private void OnIncrementClicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var item = button?.CommandParameter as VTD_RESTO_APERTURA_PEDIDO_Entity;
+
+            if (item != null)
+            {
+                item.Ped_nCantidad ++;
+                UpdateListViewItem(item);
+            }
+        }
+
+        private void OnDecrementClicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var item = button?.CommandParameter as VTD_RESTO_APERTURA_PEDIDO_Entity;
+
+            if (item != null && item.Ped_nCantidad > 0)
+            {
+                item.Ped_nCantidad--;
+                UpdateListViewItem(item);
+            }
+        }
+
+        private async void OnCommentClicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var item = button?.CommandParameter as VTD_RESTO_APERTURA_PEDIDO_Entity;
+
+            if (item != null)
+            {
+                // Muestra un cuadro de diálogo de entrada de texto
+                var comentario = await DisplayPromptAsync("Comentario", "Ingrese un comentario:", initialValue: item.Ped_cComentario);
+
+                // Verifica si el usuario ingresó un comentario
+                if (!string.IsNullOrEmpty(comentario))
+                {
+                    // Actualiza el comentario en el modelo
+                    item.Ped_cComentario  = comentario;
+                    UpdateListViewItem(item);
+                }
+            }
+        }
+
+        private void UpdateListViewItem(VTD_RESTO_APERTURA_PEDIDO_Entity item)
+        {
+            // Notifica el cambio en la propiedad Cantidad para que la interfaz de usuario se actualice
+            var index = pedidos.IndexOf(item);
+            listView.LayoutManager.ScrollToRowIndex(index, Syncfusion.ListView.XForms.ScrollToPosition.Center, true);
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             LlenaGrillaPedido();
-            grdDetalle.GridColumnSizer.Refresh(true);
+          //  grdDetalle.GridColumnSizer.Refresh(true);
         }
 
         private void LlenaGrillaPedido()
@@ -95,7 +191,7 @@ namespace RestoAPP.Views
 
                 dtDetalle = JsonConvert.DeserializeObject<DataTable>(result);
                 dtDetalle.TableName = Title;
-                grdDetalle.ItemsSource = dtDetalle;
+               // grdDetalle.ItemsSource = dtDetalle;
             }
             catch (Exception ex)
             {
@@ -240,26 +336,26 @@ namespace RestoAPP.Views
             return oEntidad;
         }
 
-        private void grdDetalle_QueryRowHeight(object sender, Syncfusion.SfDataGrid.XForms.QueryRowHeightEventArgs e)
-        {
-            if (e.RowIndex > 0)
-            {
-                e.Height = SfDataGridHelpers.GetRowHeight(grdDetalle, e.RowIndex);
-                e.Handled = true;
-            }
-        }
+        //private void grdDetalle_QueryRowHeight(object sender, Syncfusion.SfDataGrid.XForms.QueryRowHeightEventArgs e)
+        //{
+        //    if (e.RowIndex > 0)
+        //    {
+        //        e.Height = SfDataGridHelpers.GetRowHeight(grdDetalle, e.RowIndex);
+        //        e.Handled = true;
+        //    }
+        //}
 
-        private void grdDetalle_SelectionChanged(object sender, Syncfusion.SfDataGrid.XForms.GridSelectionChangedEventArgs e)
-        {
-            try
-            {
-                Application.Current.Properties["Ped_nItem"] = grdDetalle.GetCellValue(e.AddedItems[0], "Ped_nItem");
-                Application.Current.Properties["Cab_cCatalogo"] = grdDetalle.GetCellValue(e.AddedItems[0], "Cab_cCatalogo");
+        //private void grdDetalle_SelectionChanged(object sender, Syncfusion.SfDataGrid.XForms.GridSelectionChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        Application.Current.Properties["Ped_nItem"] = grdDetalle.GetCellValue(e.AddedItems[0], "Ped_nItem");
+        //        Application.Current.Properties["Cab_cCatalogo"] = grdDetalle.GetCellValue(e.AddedItems[0], "Cab_cCatalogo");
                 
-            }
-            catch (Exception)
-            {
-            }
-        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
     }
 }

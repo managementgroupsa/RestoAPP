@@ -13,13 +13,86 @@
 
     <ContentPage.Content>
 
-        <StackLayout Padding="10,10"  Orientation="Vertical" >
+        <StackLayout Padding="0,0"  Orientation="Vertical" >
 
             <ScrollView x:Name="ScrollView">
 
                 <StackLayout>
 
-                    <datagrid:SfDataGrid 
+                <syncfusion:SfListView x:Name="listView" 
+                Padding="0,5,0,5"
+                SelectionMode="Single"  
+                BackgroundColor="AntiqueWhite"
+                ItemSpacing="10,5,10,10"
+                ItemSize="{OnPlatform Android={OnIdiom Phone=140, Tablet=100}, iOS={OnIdiom Phone=100, Tablet= 90}, UWP={OnIdiom Phone=120, Tablet=150, Desktop=150}, macOS=105,WPF=150}"
+                SelectionBackgroundColor="#ECECEC"
+                TapCommand="{Binding ItemTappedCommand}"
+                >
+
+                        <syncfusion:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="White" Padding="1"  CornerRadius="5"    HasShadow="{OnPlatform Android=true, iOS=false, UWP=true, WPF=true}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="40" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Column="0" Padding="10,0,0,0">
+
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                
+                                                <Label Text="{Binding Ped_nItem}" TextColor="{StaticResource Primary}" Grid.Column="0" HorizontalTextAlignment="Start" IsVisible="false"/>
+
+                                                <Label Grid.Row="1" Text="Cantidad:" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="None"  TextColor="{StaticResource Primary}"/>
+                                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Ped_nCantidad}" FontAttributes="Bold" TextColor="Red" />
+
+                                                <Label Grid.Row="2" Text="Descripción:" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="None" TextColor="{StaticResource Primary}"/>
+                                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Cab_cDescripLarga}"/>
+
+                                                <Label Grid.Row="3" Text="Codigo:" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="None" TextColor="{StaticResource Primary}"/>
+                                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Cab_cCatalogo}" />
+
+                                                <Label Grid.Row="4" Text="Comentario:" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="None" TextColor="{StaticResource Primary}"/>
+                                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding Ped_cComentario}" />
+
+
+                                            </Grid>
+                                        
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Column="1" Padding="0,0,0,0"  HorizontalOptions="Fill" VerticalOptions="Center">
+
+                                            <Grid >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <Button Grid.Row="0" Grid.Column="0" Text="+" TextColor="White" BackgroundColor="Green" Clicked="OnIncrementClicked" FontSize="Medium"   CommandParameter="{Binding .}" CornerRadius="5" />
+                                                <Button Grid.Row="1" Grid.Column="0" Text="-" TextColor="White" BackgroundColor="DarkRed" Clicked="OnDecrementClicked" FontSize="Medium"  CommandParameter="{Binding .}" CornerRadius="5"/>
+                                                <Button Grid.Row="2" Grid.Column="0" Text="C" TextColor="White" BackgroundColor="LightGray"   Clicked="OnCommentClicked" FontSize="Medium"   CommandParameter="{Binding .}" CornerRadius="5"/>
+
+                                            </Grid>
+
+                                        </StackLayout>
+
+
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </syncfusion:SfListView.ItemTemplate>
+
+
+                    </syncfusion:SfListView>
+
+                    <!--<datagrid:SfDataGrid 
                                 x:Name="grdDetalle"
                                 AutoGenerateColumns="False"
                                 AllowResizingColumn="True"
@@ -52,7 +125,7 @@
                             <datagrid:GridTextColumn HeaderText="Codigo" Width="50" TextAlignment="Center" MappingName="Cab_cCatalogo"  />
                         </datagrid:SfDataGrid.Columns>
                         
-                    </datagrid:SfDataGrid>
+                    </datagrid:SfDataGrid>-->
                 </StackLayout>
             </ScrollView>
 
