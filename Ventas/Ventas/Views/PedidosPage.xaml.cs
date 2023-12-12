@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using RestoAPP.Extensions;
-using RestoAPP.Models;
-using RestoAPP.ViewModels;
+using RestoPLUS.Extensions;
+using RestoPLUS.Models;
+using RestoPLUS.ViewModels;
 using Syncfusion.GridCommon;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace RestoAPP.Views
+namespace RestoPLUS.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PedidosPage : ContentPage
@@ -41,6 +41,13 @@ namespace RestoAPP.Views
         //    view.Table = oEntidad.GetData();
 
         //}
+
+        private void OnActualizarPedidosClicked(object sender, EventArgs e)
+        {
+            var oEntidad = new PedidosViewModel();
+            view.Table = oEntidad.GetData();
+            listView.ItemsSource = view;
+        }
 
         public PedidosPage()
         {

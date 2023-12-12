@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:RestoAPP.Views"
+       xmlns:local="clr-namespace:RestoPLUS.Views"
        Title="Ventas"
-       x:Class="RestoAPP.AppShell">
+       x:Class="RestoPLUS.AppShell">
 
     <!--
         The overall app visual hierarchy is defined here, along with navigation.

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RestoAPP.Models
+namespace RestoPLUS.Models
 {
     public class AppSettings
     {

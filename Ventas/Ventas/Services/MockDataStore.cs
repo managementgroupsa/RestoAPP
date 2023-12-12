@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using RestoAPP.Models;
+using RestoPLUS.Models;
 
-namespace RestoAPP.Services
+namespace RestoPLUS.Services
 {
     public class MockDataStore : IDataStore<Item>
     {

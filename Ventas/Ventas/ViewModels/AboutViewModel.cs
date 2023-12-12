@@ -3,7 +3,7 @@ using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace RestoAPP.ViewModels
+namespace RestoPLUS.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {

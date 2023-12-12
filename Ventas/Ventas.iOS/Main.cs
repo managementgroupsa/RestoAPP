@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace RestoAPP.iOS
+namespace RestoPLUS.iOS
 {
     public class Application
     {

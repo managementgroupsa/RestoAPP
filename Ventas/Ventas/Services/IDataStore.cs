@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace RestoAPP.Services
+namespace RestoPLUS.Services
 {
     public interface IDataStore<T>
     {

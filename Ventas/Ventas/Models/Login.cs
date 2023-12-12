@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace RestoAPP.Models
+namespace RestoPLUS.Models
 {
 
 

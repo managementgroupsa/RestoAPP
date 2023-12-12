@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace RestoAPP.Models
+namespace RestoPLUS.Models
 {
     public class VTD_RESTO_APERTURA_Entity
     {

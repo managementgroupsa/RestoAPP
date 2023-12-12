@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using RestoAPP.Extensions;
-using RestoAPP.Models;
+using RestoPLUS.Extensions;
+using RestoPLUS.Models;
 using Syncfusion.SfDataGrid.XForms;
 using System;
 using System.Collections.Generic;
@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Newtonsoft.Json.Converters;
-using RestoAPP.ViewModels;
+using RestoPLUS.ViewModels;
 using Syncfusion.ListView.XForms;
 using Syncfusion.SfRangeSlider.XForms;
 
-namespace RestoAPP.Views
+namespace RestoPLUS.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PedidosDetallePage : ContentPage

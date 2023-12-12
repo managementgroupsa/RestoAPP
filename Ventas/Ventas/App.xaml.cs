@@ -1,15 +1,15 @@
-﻿using RestoAPP.Services.Identity;
-using RestoAPP.Services.Routing;
+﻿using RestoPLUS.Services.Identity;
+using RestoPLUS.Services.Routing;
 using Splat;
 using System;
-using RestoAPP.Services;
-using RestoAPP.Views;
+using RestoPLUS.Services;
+using RestoPLUS.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using RestoAPP.ViewModels;
+using RestoPLUS.ViewModels;
 
 
-namespace RestoAPP
+namespace RestoPLUS
 {
     public partial class App : Application
     {

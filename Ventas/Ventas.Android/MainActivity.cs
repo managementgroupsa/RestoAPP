@@ -3,7 +3,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 
-namespace RestoAPP.Droid
+namespace RestoPLUS.Droid
 {
     [Activity(Label = "RestoPLUS", Icon = "@mipmap/iconstore", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity

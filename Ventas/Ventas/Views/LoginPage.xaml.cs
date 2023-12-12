@@ -1,19 +1,19 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using RestoAPP.Extensions;
-using RestoAPP.Models;
-using RestoAPP.ViewModels;
+using RestoPLUS.Extensions;
+using RestoPLUS.Models;
+using RestoPLUS.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Splat;
-using RestoAPP.Services.Routing;
+using RestoPLUS.Services.Routing;
 using System.Linq;
 using System.IO;
 using System.Reflection;
 
-namespace RestoAPP.Views
+namespace RestoPLUS.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace RestoAPP.ViewModels
+namespace RestoPLUS.ViewModels
 {
     public class TableInfo : INotifyPropertyChanged
     {

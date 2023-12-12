@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 
-namespace RestoAPP.Models
+namespace RestoPLUS.Models
 {
     public class VTD_RESTO_APERTURA_PEDIDO_Entity : INotifyPropertyChanged
     {

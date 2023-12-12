@@ -7,9 +7,9 @@ using Xamarin.Forms;
 
 using Syncfusion.ListView.XForms;
 using Syncfusion.ListView.XForms.Helpers;
-using RestoAPP.Models;
+using RestoPLUS.Models;
 using System.Threading.Tasks;
-namespace RestoAPP.ViewModels
+namespace RestoPLUS.ViewModels
 {
     public class PedidosDetalleViewModel : BaseViewModel
     {

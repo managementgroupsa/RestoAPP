@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace RestoAPP.Services.Identity
+namespace RestoPLUS.Services.Identity
 {
     class IdentityServiceStub : IIdentityService
     {

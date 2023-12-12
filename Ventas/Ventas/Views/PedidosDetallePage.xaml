@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-			 x:Class="RestoAPP.Views.PedidosDetallePage"
-			 xmlns:vm="clr-namespace:RestoAPP.ViewModels"
+			 x:Class="RestoPLUS.Views.PedidosDetallePage"
+			 xmlns:vm="clr-namespace:RestoPLUS.ViewModels"
 			 xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"                         
              
 			 Title="{Binding Title}">
@@ -27,13 +27,13 @@
 										   >
                         <syncfusion:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <Frame BackgroundColor="White" Padding="1"  CornerRadius="0"    HasShadow="{OnPlatform Android=true, iOS=false, UWP=true, WPF=true}" BorderColor="Black" >
+                                <Frame BackgroundColor="White" Padding="1"  CornerRadius="10"    HasShadow="{OnPlatform Android=true, iOS=false, UWP=true, WPF=true}" BorderColor="Gainsboro" >
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
 
-                                        <StackLayout Grid.Column="0" Padding="10,0,0,0" BackgroundColor="Cornsilk" >
+                                        <StackLayout Grid.Column="0" Padding="10,0,0,0" BackgroundColor="GhostWhite" >
 
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
@@ -42,8 +42,8 @@
                                                     <ColumnDefinition Width="Auto"/>
                                                 </Grid.ColumnDefinitions>
 
-                                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Cab_cCatalogo}" VerticalOptions="Center" HorizontalOptions="Start" />
-                                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Cab_cDescripLarga}" VerticalOptions="Center" HorizontalOptions="Start" />
+                                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding Cab_cCatalogo}" VerticalOptions="Center" HorizontalOptions="Start" />
+                                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Cab_cDescripLarga}" VerticalOptions="Center" HorizontalOptions="Start" />
                                                 <Label Grid.Row="2" Grid.Column="2" Text="{Binding Ped_nCantidad}" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="false"/>
 
                                             </Grid>
@@ -67,7 +67,7 @@
                     <syncfusion:SfListView x:Name="listView"  
 				    Padding="0,5,0,5"
 				    SelectionMode="Single"  
-				    BackgroundColor="AntiqueWhite"
+				    BackgroundColor="WhiteSmoke"
 				    ItemSpacing="10,5,10,10"
 				    ItemSize="{OnPlatform Android={OnIdiom Phone=130, Tablet=100}, iOS={OnIdiom Phone=100, Tablet= 90}, UWP={OnIdiom Phone=120, Tablet=150, Desktop=150}, macOS=105,WPF=150}"
 				    SelectionBackgroundColor="#ECECEC"

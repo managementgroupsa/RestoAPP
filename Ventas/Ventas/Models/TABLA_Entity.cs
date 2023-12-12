@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
-namespace RestoAPP.Models
+namespace RestoPLUS.Models
 {
     public class TABLA_Entity
     {

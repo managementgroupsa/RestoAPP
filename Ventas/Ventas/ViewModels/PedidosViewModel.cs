@@ -7,13 +7,13 @@ using Xamarin.Forms;
 
 using Syncfusion.ListView.XForms;
 using Syncfusion.ListView.XForms.Helpers;
-using RestoAPP.Models;
+using RestoPLUS.Models;
 using System.Threading.Tasks;
-using RestoAPP.Views;
+using RestoPLUS.Views;
 using Newtonsoft.Json;
-using RestoAPP.Extensions;
+using RestoPLUS.Extensions;
 using System.Data;
-namespace RestoAPP.ViewModels
+namespace RestoPLUS.ViewModels
 {
     public class PedidosViewModel : BaseViewModel
     {

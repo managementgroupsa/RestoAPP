@@ -1,9 +1,9 @@
-﻿using RestoAPP.Services.Identity;
-using RestoAPP.Services.Routing;
+﻿using RestoPLUS.Services.Identity;
+using RestoPLUS.Services.Routing;
 using Splat;
-using RestoAPP.Views;
+using RestoPLUS.Views;
 
-namespace RestoAPP.ViewModels
+namespace RestoPLUS.ViewModels
 {
     class LoadingViewModel : BaseViewModel
     {
