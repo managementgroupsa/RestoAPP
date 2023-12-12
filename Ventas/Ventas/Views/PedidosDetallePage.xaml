@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             x:Class="RestoAPP.Views.PedidosDetallePage"
-             xmlns:vm="clr-namespace:RestoAPP.ViewModels"
-             xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"                         
-             Title="{Binding Title}">
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+			 x:Class="RestoAPP.Views.PedidosDetallePage"
+			 xmlns:vm="clr-namespace:RestoAPP.ViewModels"
+			 xmlns:datagrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"                         
+             
+			 Title="{Binding Title}">
 
     <ContentPage.BindingContext>
         <vm:PedidosDetalleViewModel />
@@ -15,19 +16,63 @@
 
         <StackLayout Padding="0,0"  Orientation="Vertical" >
 
-            <ScrollView x:Name="ScrollView">
+            <ScrollView x:Name="ScrollViewBusqueda" IsVisible="False">
 
                 <StackLayout>
 
-                <syncfusion:SfListView x:Name="listView" 
-                Padding="0,5,0,5"
-                SelectionMode="Single"  
-                BackgroundColor="AntiqueWhite"
-                ItemSpacing="10,5,10,10"
-                ItemSize="{OnPlatform Android={OnIdiom Phone=140, Tablet=100}, iOS={OnIdiom Phone=100, Tablet= 90}, UWP={OnIdiom Phone=120, Tablet=150, Desktop=150}, macOS=105,WPF=150}"
-                SelectionBackgroundColor="#ECECEC"
-                TapCommand="{Binding ItemTappedCommand}"
-                >
+                    <Entry x:Name="filtroEntry" Placeholder="Filtrar productos" TextChanged="OnFiltroTextChanged" />
+                    <syncfusion:SfListView x:Name="productosListView" 
+											ItemSpacing="10,5,10,5"
+											ItemSize="{OnPlatform Android={OnIdiom Phone=60, Tablet=100}, iOS={OnIdiom Phone=100, Tablet= 90}, UWP={OnIdiom Phone=120, Tablet=150, Desktop=150}, macOS=105,WPF=150}"
+										   >
+                        <syncfusion:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="White" Padding="1"  CornerRadius="0"    HasShadow="{OnPlatform Android=true, iOS=false, UWP=true, WPF=true}" BorderColor="Black" >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Grid.Column="0" Padding="10,0,0,0" BackgroundColor="Cornsilk" >
+
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Cab_cCatalogo}" VerticalOptions="Center" HorizontalOptions="Start" />
+                                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Cab_cDescripLarga}" VerticalOptions="Center" HorizontalOptions="Start" />
+                                                <Label Grid.Row="2" Grid.Column="2" Text="{Binding Ped_nCantidad}" VerticalOptions="Center" HorizontalOptions="Start" IsVisible="false"/>
+
+                                            </Grid>
+
+                                        </StackLayout>
+
+
+
+
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </syncfusion:SfListView.ItemTemplate>
+                    </syncfusion:SfListView>
+                </StackLayout>
+            </ScrollView>
+
+            <ScrollView x:Name="ScrollViewPedido">
+
+                <StackLayout>
+                    <syncfusion:SfListView x:Name="listView"  
+				    Padding="0,5,0,5"
+				    SelectionMode="Single"  
+				    BackgroundColor="AntiqueWhite"
+				    ItemSpacing="10,5,10,10"
+				    ItemSize="{OnPlatform Android={OnIdiom Phone=130, Tablet=100}, iOS={OnIdiom Phone=100, Tablet= 90}, UWP={OnIdiom Phone=120, Tablet=150, Desktop=150}, macOS=105,WPF=150}"
+				    SelectionBackgroundColor="#ECECEC"
+				    TapCommand="{Binding ItemTappedCommand}">
+
 
                         <syncfusion:SfListView.ItemTemplate>
                             <DataTemplate>
@@ -46,7 +91,7 @@
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
 
-                                                
+
                                                 <Label Text="{Binding Ped_nItem}" TextColor="{StaticResource Primary}" Grid.Column="0" HorizontalTextAlignment="Start" IsVisible="false"/>
 
                                                 <Label Grid.Row="1" Text="Cantidad:" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="None"  TextColor="{StaticResource Primary}"/>
@@ -63,15 +108,14 @@
 
 
                                             </Grid>
-                                        
+
                                         </StackLayout>
 
-                                        <StackLayout Grid.Column="1" Padding="0,0,0,0"  HorizontalOptions="Fill" VerticalOptions="Center">
+                                        <StackLayout Grid.Column="1" Padding="0,0,0,0"  HorizontalOptions="Center"  VerticalOptions="Center">
 
                                             <Grid >
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
-                                                    
                                                 </Grid.ColumnDefinitions>
 
 
@@ -92,45 +136,38 @@
 
                     </syncfusion:SfListView>
 
-                    <!--<datagrid:SfDataGrid 
-                                x:Name="grdDetalle"
-                                AutoGenerateColumns="False"
-                                AllowResizingColumn="True"
-                                AutoGenerateColumnsModeForCustomType="Both"
-                                SelectionChanged="grdDetalle_SelectionChanged"
-                                QueryRowHeight="grdDetalle_QueryRowHeight"
-                                SelectionMode="Single">
 
-                        <datagrid:SfDataGrid.GridStyle>
-                                    <datagrid:DefaultStyle HeaderBackgroundColor="{StaticResource Primary}"
-                                                               HeaderForegroundColor="White"
-                                                               RowBackgroundColor="White" 
-                                                               RowForegroundColor="Black"
-                                                               SelectionBackgroundColor="LightSkyBlue" 
-                                                               SelectionForegroundColor="White"
-                                                               CaptionSummaryRowBackgroundColor="Black" 
-                                                               CaptionSummaryRowForegroundColor="White"
-                                                               GridCellBorderColor="{Binding BorderColor}" 
-                                                               LoadMoreViewBackgroundColor="Gray"
-                                                               LoadMoreViewForegroundColor="Black" 
-                                                               AlternatingRowColor="PapayaWhip"/>
-                        </datagrid:SfDataGrid.GridStyle>
 
-                        <datagrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
-                            <datagrid:GridTextColumn HeaderText="Item" Width="40"  TextAlignment="Start"  MappingName="Ped_nItem" />
-                            <datagrid:GridNumericColumn HeaderText="Cant." Width="50" TextAlignment="End" MappingName="Ped_nCantidad"  />
-                    
-                            <datagrid:GridTextColumn HeaderText="Descripción" Width="200" TextAlignment="Start" MappingName="Cab_cDescripLarga" />
-                            <datagrid:GridTextColumn HeaderText="Comentario" Width="100" TextAlignment="Start" MappingName="Ped_cComentario" />
-                            <datagrid:GridTextColumn HeaderText="Codigo" Width="50" TextAlignment="Center" MappingName="Cab_cCatalogo"  />
-                        </datagrid:SfDataGrid.Columns>
-                        
-                    </datagrid:SfDataGrid>-->
+
+
                 </StackLayout>
+
+
             </ScrollView>
 
-        </StackLayout>
+            <StackLayout Padding="10,0" x:Name="BotonesGrabar">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
+                    <Button Grid.Column="0" Text="Agregar" TextColor="White" BackgroundColor="green"   Clicked="OnAgregarClicked" FontSize="Medium"   CommandParameter="{Binding .}" CornerRadius="5"/>
+                    <Button Grid.Column="1" Text="Grabar" TextColor="White" BackgroundColor="peru"   Clicked="OnGrabarClicked" FontSize="Medium"   CommandParameter="{Binding .}" CornerRadius="5"/>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout Padding="10,0" x:Name="BotonesCancelarProductos" IsVisible="false">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="1" Text="Cancelar" TextColor="White" BackgroundColor="DarkRed"     Clicked="OnCancelarProductosClicked" FontSize="Medium"   CommandParameter="{Binding .}" CornerRadius="5"/>
+                </Grid>
+            </StackLayout>
+
+        </StackLayout>
 
     </ContentPage.Content>
 </ContentPage>

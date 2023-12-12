@@ -9,8 +9,6 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Newtonsoft.Json.Converters;
@@ -23,6 +21,7 @@ namespace RestoAPP.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PedidosDetallePage : ContentPage
     {
+        private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> ItemsNew;
         private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> pedidos;
 
         DataTable dtDetalle = new DataTable();
@@ -47,7 +46,9 @@ namespace RestoAPP.Views
 
         async void OnPreviousPageButtonClicked(object sender, EventArgs e)
         {
+            listView.IsVisible = true;
             await Navigation.PopAsync();
+            
         }
 
         public PedidosDetallePage()
@@ -63,10 +64,6 @@ namespace RestoAPP.Views
             //''dtDetalle = Propiedades.CreateEntityToDataTable(typeof(VTD_RESTO_APERTURA_Entity), Title);
             //''dtPedidos = Propiedades.CreateEntityToDataTable(typeof(VTD_RESTO_APERTURA_PEDIDO_Entity), Title);
 
-
-            
-
-            
 
             if (cOpcion == Opciones.Nuevo)
             {
@@ -85,6 +82,22 @@ namespace RestoAPP.Views
             }
 
             listView.ItemsSource = pedidos;
+
+            //-------------------------------------------
+
+            // Inicializa tu lista de productos y asígnala al origen de datos del SfListView
+            ItemsNew = new ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity>();
+            
+
+            // Agrega algunos productos ficticios para propósitos de ejemplo
+            ItemsNew.Add(new VTD_RESTO_APERTURA_PEDIDO_Entity { Cab_cCatalogo = "000008", Cab_cDescripLarga = "PRODUCTO XXX" , Ped_nCantidad =1 });
+            ItemsNew.Add(new VTD_RESTO_APERTURA_PEDIDO_Entity { Cab_cCatalogo = "000009", Cab_cDescripLarga = "PRODUCTO YYY", Ped_nCantidad = 1 });
+            ItemsNew.Add(new VTD_RESTO_APERTURA_PEDIDO_Entity { Cab_cCatalogo = "000010", Cab_cDescripLarga = "PRODUCTO ZZZ", Ped_nCantidad = 1 });
+
+            productosListView.ItemDoubleTapped  += OnItemDoubleTappedEnProductosListView;
+            
+            //-------------------------------------------
+
         }
 
 
@@ -122,15 +135,40 @@ namespace RestoAPP.Views
             }
         }
 
-        private void OnDecrementClicked(object sender, EventArgs e)
+        private async void OnDecrementClicked(object sender, EventArgs e)
         {
             var button = sender as Button;
             var item = button?.CommandParameter as VTD_RESTO_APERTURA_PEDIDO_Entity;
 
-            if (item != null && item.Ped_nCantidad > 0)
+            if (item != null)
             {
+                // Disminuye la cantidad en uno
                 item.Ped_nCantidad--;
-                UpdateListViewItem(item);
+
+                // Si la cantidad llega a cero, muestra un cuadro de diálogo para confirmar la eliminación
+                if (item.Ped_nCantidad == 0)
+                {
+                    var confirmacionPage = new ConfirmacionEliminarProductoPage();
+
+                    // Suscríbete al evento de confirmación
+                    MessagingCenter.Subscribe<ConfirmacionEliminarProductoPage, bool>(this, "EliminarProducto", (senderPage, confirmacion) =>
+                    {
+                        // Si el usuario acepta, elimina el producto de la lista
+                        if (confirmacion)
+                        {
+                            pedidos.Remove(item);
+                        }
+                        else
+                        {
+                            // Si el usuario no acepta, restaura la cantidad a su valor original
+                            item.Ped_nCantidad=1;
+                        }
+                    });
+
+                    await Navigation.PushModalAsync(confirmacionPage);
+
+                    UpdateListViewItem(item);
+                }
             }
         }
 
@@ -152,6 +190,80 @@ namespace RestoAPP.Views
                     UpdateListViewItem(item);
                 }
             }
+        }
+
+        private  void OnAgregarClicked(object sender, EventArgs e)
+        {
+            productosListView.ItemsSource = ItemsNew; // Establece la lista de productos en el segundo SfListView
+            filtroEntry.Text = string.Empty; // Limpia el filtro
+
+            ScrollViewBusqueda.IsVisible = true; 
+            ScrollViewPedido.IsVisible = false;
+
+            BotonesCancelarProductos.IsVisible = true;
+            BotonesGrabar.IsVisible = false;
+            
+
+        }
+
+        private void OnFiltroTextChanged(object sender, TextChangedEventArgs e)
+        {
+            // Aplica el filtro a la lista de productos en el segundo SfListView
+            var filtro = e.NewTextValue.ToLower();
+            var productosFiltrados = ItemsNew.Where(p => p.Cab_cCatalogo.ToLower().Contains(filtro) || p.Cab_cDescripLarga.ToLower().Contains(filtro)).ToList();
+            productosListView.ItemsSource = productosFiltrados;
+        }
+
+        private void OnItemDoubleTappedEnProductosListView(object sender, Syncfusion.ListView.XForms.ItemDoubleTappedEventArgs  e)
+        {
+            // Maneja el evento de doble toque en el segundo SfListView
+            if (e.ItemData is VTD_RESTO_APERTURA_PEDIDO_Entity productoSeleccionado)
+            {
+                // Verifica si el producto ya está presente en la lista inicial
+                var productoExistente = pedidos.FirstOrDefault(p => p.Cab_cCatalogo == productoSeleccionado.Cab_cCatalogo);
+
+                if (productoExistente != null)
+                {
+                    // Si el producto ya está en la lista, suma uno a la cantidad
+                    productoExistente.Ped_nCantidad++;
+                }
+                else
+                {
+                    // Si el producto no está en la lista, agrégalo con cantidad 1
+                    productoSeleccionado.Ped_nCantidad = 1;
+                    pedidos.Add(productoSeleccionado);
+                }
+
+                // Oculta el segundo SfListView
+                ScrollViewBusqueda.IsVisible = false;
+                ScrollViewPedido.IsVisible = true;
+
+                BotonesCancelarProductos.IsVisible = false;
+                BotonesGrabar.IsVisible = true;
+                
+
+
+                // Oculta el teclado desenfocando el Entry
+                filtroEntry.Unfocus();
+            }
+
+
+
+        }
+
+        private void OnCancelarProductosClicked(object sender, EventArgs e)
+        {
+            ScrollViewBusqueda.IsVisible = false;
+            ScrollViewPedido.IsVisible = true;
+
+            BotonesCancelarProductos.IsVisible = false;
+            BotonesGrabar.IsVisible = true;
+            
+        }
+
+        private void OnGrabarClicked(object sender, EventArgs e)
+        {
+
         }
 
         private void UpdateListViewItem(VTD_RESTO_APERTURA_PEDIDO_Entity item)
@@ -336,26 +448,6 @@ namespace RestoAPP.Views
             return oEntidad;
         }
 
-        //private void grdDetalle_QueryRowHeight(object sender, Syncfusion.SfDataGrid.XForms.QueryRowHeightEventArgs e)
-        //{
-        //    if (e.RowIndex > 0)
-        //    {
-        //        e.Height = SfDataGridHelpers.GetRowHeight(grdDetalle, e.RowIndex);
-        //        e.Handled = true;
-        //    }
-        //}
 
-        //private void grdDetalle_SelectionChanged(object sender, Syncfusion.SfDataGrid.XForms.GridSelectionChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        Application.Current.Properties["Ped_nItem"] = grdDetalle.GetCellValue(e.AddedItems[0], "Ped_nItem");
-        //        Application.Current.Properties["Cab_cCatalogo"] = grdDetalle.GetCellValue(e.AddedItems[0], "Cab_cCatalogo");
-                
-        //    }
-        //    catch (Exception)
-        //    {
-        //    }
-        //}
     }
 }
