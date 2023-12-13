@@ -19,6 +19,8 @@ namespace RestoPLUS.ViewModels
         private string mes_cCodigo;
         private string ape_cUserCrea;
 
+        private DateTime? ape_dFechaCrea;
+
         public string Ped_cNummov
         {
             get { return ped_cNummov; }
@@ -88,6 +90,20 @@ namespace RestoPLUS.ViewModels
                 OnPropertyChanged("Ent_cPersona");
             }
         }
+
+        public DateTime? Ape_dFechaCrea
+        {
+            get { return ape_dFechaCrea; }
+            set
+            {
+                if (ape_dFechaCrea != value)
+                {
+                    ape_dFechaCrea = value;
+                    OnPropertyChanged(nameof(Ape_dFechaCrea));
+                }
+            }
+        }
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 

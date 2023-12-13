@@ -131,6 +131,11 @@ namespace RestoPLUS.Extensions
 
         #region API-NEGOCIO
 
+        public static string AnularPedido(VTD_RESTO_APERTURA_Entity oEntidad)
+        {
+            return GetPostResultString(cURL + "/VTD_RESTO_APERTURA/AnularRegistro", oEntidad);
+        }
+
         public static string GetPostBuscarMesas(Login_Entity oEntidad)
         {
             return GetPostResultString(cURL + "/LOGIN/ValidaIngreso", oEntidad);
@@ -138,8 +143,10 @@ namespace RestoPLUS.Extensions
 
         public static string GetPostGrabarPedido(PEDIDO_Entity oEntidad)
         {
+            // Convertir el objeto a JSON
+            string json = JsonConvert.SerializeObject(oEntidad);
 
-            return GetPostResultString(cURL + "/GENERAL/GrabarPedido", oEntidad);
+            return GetPostResultString(cURL + "/GENERAL/GrabaPedido", oEntidad);
         }
         
         public static string BuscarPedidosPorUsuario(VTD_RESTO_APERTURA_PEDIDO_Entity oEntidad)

@@ -19,48 +19,23 @@ namespace RestoPLUS.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PedidosPage : ContentPage
     {
-
-        string Pan_cAnio = Application.Current.Properties["Pan_cAnio"] as string;
-        string Emp_cCodigo = Application.Current.Properties["Emp_cCodigo"] as string;
-        string Pvt_cCodigo = Application.Current.Properties["Pvt_cCodigo"] as string;
-        string Usu_cCodUsuario = Application.Current.Properties["Usu_cCodUsuario"] as string;
-
-        DataView view;
+        private PedidosViewModel viewModel;
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-          //  LlenarMesas();
-         
 
+            // Ejecutar el comando al aparecer la página
+            viewModel.RefreshCommand.Execute(null);
         }
 
-        //private void LlenarMesas()
-        //{
-        //    var oEntidad = new PedidosViewModel();
-        //    view.Table = oEntidad.GetData();
-
-        //}
-
-        private void OnActualizarPedidosClicked(object sender, EventArgs e)
-        {
-            var oEntidad = new PedidosViewModel();
-            view.Table = oEntidad.GetData();
-            listView.ItemsSource = view;
-        }
 
         public PedidosPage()
         {
             InitializeComponent();
 
-            try 
-            {
-               // LlenarMesas();
-                //listView.ItemsSource  = view; 
-            } 
-            catch (Exception ex) 
-            { 
-            }
+            viewModel = new PedidosViewModel();
+            BindingContext = viewModel;
         }
     }
 }

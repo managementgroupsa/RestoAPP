@@ -21,6 +21,8 @@ namespace RestoPLUS.Views
 
         }
 
+
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

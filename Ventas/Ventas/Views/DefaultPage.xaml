@@ -8,18 +8,23 @@
     <ContentPage.BindingContext>
         <vm:DefaultViewModel/>
     </ContentPage.BindingContext>
+
+   
+    
     
     <ContentPage.Content>
 
         <RelativeLayout>
+
             <Image Aspect="AspectFit"  Margin="0,0,0,30" Source="logodennys.jpg"
                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
-               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}"/>
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+            </Image>
 
-            
+
             <StackLayout Orientation="Vertical" Padding="5,10" >
 
-                
+
                 <Label x:Name="lblNombreEmpresa" TextColor="Gray" FontSize="Micro"/>
                 <Label x:Name="lblEmpresa"  TextColor="Gray" FontSize="Micro"/>
                 <Label x:Name="lblPuntoVenta" TextColor="Gray" FontSize="Micro"/>
@@ -27,7 +32,7 @@
                 <Label x:Name="lblAnio" TextColor="Gray" FontSize="Micro"/>
 
 
-                
+
                 <StackLayout Orientation="Horizontal">
                     <Label Text="T.SESION: " TextColor="Gray" FontSize="Micro"/>
                     <Label Text="{Binding TiempoSesion}" FontSize="Micro"/>
@@ -38,7 +43,7 @@
                     <Label Text="{Binding TiempoInactividad}" FontSize="Micro"/>
                 </StackLayout>
 
-                
+
             </StackLayout>
 
 

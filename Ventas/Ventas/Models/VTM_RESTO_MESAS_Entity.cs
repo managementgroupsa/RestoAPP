@@ -40,7 +40,13 @@ namespace RestoPLUS.Models
         [Display(Name = "NoParameter")]
         [MaxLength(10)]
         public string Ped_cNummov { get; set; }
+
+        [Display(Name = "NoParameter")]
+        public DateTime Ape_dFechaCrea { get; set; }
+
     }
+
+
 
 }
 

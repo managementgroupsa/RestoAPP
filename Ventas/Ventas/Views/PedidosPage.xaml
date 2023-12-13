@@ -4,16 +4,31 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              x:Class="RestoPLUS.Views.PedidosPage"
              xmlns:vm="clr-namespace:RestoPLUS.ViewModels"
-             Title="{Binding Title}">
+             >
 
     <ContentPage.BindingContext>
         <vm:PedidosViewModel />
     </ContentPage.BindingContext>
 
+   
     <ContentPage.Content>
 
         <StackLayout Padding="0,0"  Orientation="Vertical" >
 
+            <StackLayout Padding="10,10" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+
+                    <Button Grid.Column="0" Text="Actualizar" TextColor="White" BackgroundColor="BurlyWood"  Command="{Binding RefreshCommand}"  FontSize="Medium"   CommandParameter="{Binding .}" CornerRadius="5"/>
+                </Grid>
+            </StackLayout>
+            
             <ScrollView x:Name="ScrollViewBusqueda" >
                 <RelativeLayout>
                     <syncfusion:SfListView x:Name="listView" 
@@ -50,9 +65,13 @@
                                             <Label Text="{Binding Mes_cDescripcion}" LineBreakMode="WordWrap" FontAttributes="Bold"
                                            FontSize="{OnPlatform Android={OnIdiom Phone=18, Tablet=22}, iOS={OnIdiom Phone=18, Tablet=22}, UWP={OnIdiom Phone=16, Tablet=26, Desktop=26}, macOS=22, WPF=26}" />
 
-                                            <Label Text="{Binding Ent_cPersona}" LineBreakMode="WordWrap"/>
-                                            <Label Text="{Binding Res_cNummov}" LineBreakMode="WordWrap" IsVisible="false"/>
-                                            <Label Text="{Binding Ped_cNummov}" LineBreakMode="WordWrap" IsVisible="false"/>
+                                            <Label Text="{Binding Ent_cPersona}" />
+                                            
+                                            <Label Text="{Binding Ape_dFechaCrea}" />
+                                            
+                                            
+                                            <Label Text="{Binding Res_cNummov}" IsVisible="false"/>
+                                            <Label Text="{Binding Ped_cNummov}" IsVisible="false"/>
 
                                         </StackLayout>
                                     </Grid>
@@ -68,15 +87,7 @@
 
 
 
-            <StackLayout Padding="10,0" >
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Text="Actualizar" TextColor="White" BackgroundColor="peru"     Clicked="OnActualizarPedidosClicked" FontSize="Medium"   CommandParameter="{Binding .}" CornerRadius="5"/>
-                </Grid>
-            </StackLayout>
         </StackLayout>
 
     </ContentPage.Content>

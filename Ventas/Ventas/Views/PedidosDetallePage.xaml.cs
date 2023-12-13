@@ -23,12 +23,12 @@ namespace RestoPLUS.Views
     {
         private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> ItemsCatalogo;
         private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> pedidos;
-        
+
 
         DataTable dtDetalle = new DataTable();
-        DataTable dtCatalogo= new DataTable();
-        DataTable dtPedidos= new DataTable();
-        
+        DataTable dtCatalogo = new DataTable();
+        // DataTable dtPedidos = new DataTable();
+
         string Ped_cNummov = Application.Current.Properties["Ped_cNummov"] as string;
         string Res_cNummov = Application.Current.Properties["Res_cNummov"] as string;
         string Pan_cAnio = Application.Current.Properties["Pan_cAnio"] as string;
@@ -40,17 +40,17 @@ namespace RestoPLUS.Views
         string Pvt_cDescripcion = Application.Current.Properties["Pvt_cDescripcion"] as string;
         string Mes_cCodigo = Application.Current.Properties["Mes_cCodigo"] as string;
 
-        protected override bool OnBackButtonPressed()
-        {
-            base.OnBackButtonPressed();
-            return true;
-        }
+        //protected override bool OnBackButtonPressed()
+        //{
+        //    base.OnBackButtonPressed();
+        //    return true;
+        //}
 
         async void OnPreviousPageButtonClicked(object sender, EventArgs e)
         {
             listView.IsVisible = true;
             await Navigation.PopAsync();
-            
+
         }
 
         public PedidosDetallePage()
@@ -61,29 +61,14 @@ namespace RestoPLUS.Views
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
 
-            
+
 
             //''dtDetalle = Propiedades.CreateEntityToDataTable(typeof(VTD_RESTO_APERTURA_Entity), Title);
             //''dtPedidos = Propiedades.CreateEntityToDataTable(typeof(VTD_RESTO_APERTURA_PEDIDO_Entity), Title);
 
-
-            if (cOpcion == Opciones.Nuevo)
+            if (cOpcion == Opciones.Editar || cOpcion == Opciones.Nuevo)
             {
-                LimpiaDatos();
-
-                LlenaGrillaPedido();
-
-                pedidos = GetPedidosFromApi(dtDetalle);
-
-                LlenaCatalogo();
-
-                ItemsCatalogo = GetProductosFromApi(dtCatalogo);
-                
-            }
-
-            if (cOpcion == Opciones.Editar)
-            {
-                LlenaGrillaPedido();
+                LlenaPedido();
 
                 pedidos = GetPedidosFromApi(dtDetalle);
 
@@ -94,37 +79,8 @@ namespace RestoPLUS.Views
 
             listView.ItemsSource = pedidos;
 
-            //-------------------------------------------
+            productosListView.ItemDoubleTapped += OnItemDoubleTappedEnProductosListView;
 
-            // Inicializa tu lista de productos y asígnala al origen de datos del SfListView
-            
-            
-
-            productosListView.ItemDoubleTapped  += OnItemDoubleTappedEnProductosListView;
-            
-            //-------------------------------------------
-
-        }
-
-        private void LlenaCatalogo()
-        {
-            try
-            {
-                VTD_RESTO_APERTURA_PEDIDO_Entity oEntidad = new VTD_RESTO_APERTURA_PEDIDO_Entity();
-
-                oEntidad.Accion = "BUSCARCATALOGO";
-                oEntidad.Emp_cCodigo = Emp_cCodigo;
-
-                string result = ProcedimientosAPI.BuscarCatalogo(oEntidad);
-
-                dtCatalogo = JsonConvert.DeserializeObject<DataTable>(result);
-                dtCatalogo.TableName = "Catalogo";
-                // grdDetalle.ItemsSource = dtDetalle;
-            }
-            catch (Exception ex)
-            {
-
-            }
         }
 
         private ObservableCollection<VTD_RESTO_APERTURA_PEDIDO_Entity> GetProductosFromApi(DataTable dt)
@@ -175,7 +131,7 @@ namespace RestoPLUS.Views
 
             if (item != null)
             {
-                item.Ped_nCantidad ++;
+                item.Ped_nCantidad++;
                 UpdateListViewItem(item);
             }
         }
@@ -206,7 +162,7 @@ namespace RestoPLUS.Views
                         else
                         {
                             // Si el usuario no acepta, restaura la cantidad a su valor original
-                            item.Ped_nCantidad=1;
+                            item.Ped_nCantidad = 1;
                         }
                     });
 
@@ -231,25 +187,56 @@ namespace RestoPLUS.Views
                 if (!string.IsNullOrEmpty(comentario))
                 {
                     // Actualiza el comentario en el modelo
-                    item.Ped_cComentario  = comentario;
+                    item.Ped_cComentario = comentario;
                     UpdateListViewItem(item);
                 }
             }
         }
 
-        private  void OnAgregarClicked(object sender, EventArgs e)
+        private void OnAgregarClicked(object sender, EventArgs e)
         {
             productosListView.ItemsSource = ItemsCatalogo; // Establece la lista de productos en el segundo SfListView
             filtroEntry.Text = string.Empty; // Limpia el filtro
 
-            ScrollViewBusqueda.IsVisible = true; 
+            ScrollViewBusqueda.IsVisible = true;
             ScrollViewPedido.IsVisible = false;
 
             BotonesCancelarProductos.IsVisible = true;
             BotonesGrabar.IsVisible = false;
-            
+
 
         }
+        private async void OnAnularClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                bool deseaAnular= await DisplayAlert("Confirmación", "¿Desea Anular el pedido actual?", "Sí", "No");
+
+                if (deseaAnular)
+                {
+                    VTD_RESTO_APERTURA_Entity oEntidad = new VTD_RESTO_APERTURA_Entity();
+
+                    oEntidad.Accion = "ANULAR";
+                    oEntidad.Emp_cCodigo = Emp_cCodigo;
+                    oEntidad.Pan_cAnio = Pan_cAnio;
+                    oEntidad.Res_cNummov = Res_cNummov;
+                    oEntidad.Pvt_cCodigo = Pvt_cCodigo;
+                    oEntidad.Ped_cNummov = Ped_cNummov;
+
+
+                    string result = ProcedimientosAPI.AnularPedido(oEntidad);
+
+
+                    await Shell.Current.Navigation.PopAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
 
         private void OnFiltroTextChanged(object sender, TextChangedEventArgs e)
         {
@@ -259,13 +246,19 @@ namespace RestoPLUS.Views
             productosListView.ItemsSource = productosFiltrados;
         }
 
-        private void OnItemDoubleTappedEnProductosListView(object sender, Syncfusion.ListView.XForms.ItemDoubleTappedEventArgs  e)
+        private void OnItemDoubleTappedEnProductosListView(object sender, Syncfusion.ListView.XForms.ItemDoubleTappedEventArgs e)
         {
             // Maneja el evento de doble toque en el segundo SfListView
             if (e.ItemData is VTD_RESTO_APERTURA_PEDIDO_Entity productoSeleccionado)
             {
                 // Verifica si el producto ya está presente en la lista inicial
                 var productoExistente = pedidos.FirstOrDefault(p => p.Cab_cCatalogo == productoSeleccionado.Cab_cCatalogo);
+                int cantidadDeItems = pedidos.Count + 1;
+
+                if (cantidadDeItems <= 0)
+                {
+                    cantidadDeItems = 1;
+                }
 
                 if (productoExistente != null)
                 {
@@ -276,6 +269,7 @@ namespace RestoPLUS.Views
                 {
                     // Si el producto no está en la lista, agrégalo con cantidad 1
                     productoSeleccionado.Ped_nCantidad = 1;
+                    productoSeleccionado.Ped_nItem = cantidadDeItems;
                     pedidos.Add(productoSeleccionado);
                 }
 
@@ -285,7 +279,7 @@ namespace RestoPLUS.Views
 
                 BotonesCancelarProductos.IsVisible = false;
                 BotonesGrabar.IsVisible = true;
-                
+
 
 
                 // Oculta el teclado desenfocando el Entry
@@ -303,11 +297,6 @@ namespace RestoPLUS.Views
 
             BotonesCancelarProductos.IsVisible = false;
             BotonesGrabar.IsVisible = true;
-            
-        }
-
-        private void OnGrabarClicked(object sender, EventArgs e)
-        {
 
         }
 
@@ -321,11 +310,11 @@ namespace RestoPLUS.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            LlenaGrillaPedido();
-          //  grdDetalle.GridColumnSizer.Refresh(true);
+            LlenaPedido();
+
         }
 
-        private void LlenaGrillaPedido()
+        private void LlenaPedido()
         {
             try
             {
@@ -348,7 +337,7 @@ namespace RestoPLUS.Views
 
                 dtDetalle = JsonConvert.DeserializeObject<DataTable>(result);
                 dtDetalle.TableName = "Pedido";
-               // grdDetalle.ItemsSource = dtDetalle;
+                // grdDetalle.ItemsSource = dtDetalle;
             }
             catch (Exception ex)
             {
@@ -356,20 +345,72 @@ namespace RestoPLUS.Views
             }
         }
 
-        private void LimpiaDatos()
+        private void LlenaCatalogo()
         {
+            try
+            {
+                VTD_RESTO_APERTURA_PEDIDO_Entity oEntidad = new VTD_RESTO_APERTURA_PEDIDO_Entity();
+
+                oEntidad.Accion = "BUSCARCATALOGO";
+                oEntidad.Emp_cCodigo = Emp_cCodigo;
+
+                string result = ProcedimientosAPI.BuscarCatalogo(oEntidad);
+
+                dtCatalogo = JsonConvert.DeserializeObject<DataTable>(result);
+                dtCatalogo.TableName = "Catalogo";
+                // grdDetalle.ItemsSource = dtDetalle;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
+
+        private async void OnGrabarClicked(object sender, EventArgs e)
+        {
+
+            if (pedidos.Count <= 0)
+            {
+                await DisplayAlert("Grabar", "El documento no tiene detalle", "OK");
+                return;
+            }
+
+
+            try
+            {
+                string Ped_cNummov = Application.Current.Properties["Ped_cNummov"] as string;
+
+                if (cOpcion == Opciones.Nuevo)
+                {
+                    Ped_cNummov = "";
+                }
+
+                if (await GrabarPedido(Ped_cNummov))
+                {
+                    await Shell.Current.Navigation.PopAsync();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "OK");
+            }
+
+        }
+
+
+
         private async Task<bool> GrabarPedido(string cPed_cNummov)
         {
             bool bEstado = false;
 
             try
             {
-                PEDIDO_Entity oEntidad = new PEDIDO_Entity ();
+                PEDIDO_Entity oEntidad = new PEDIDO_Entity();
 
                 oEntidad.Cabecera = await LlenaObjetoCabecera(cPed_cNummov);
-                oEntidad.Detalle  = await LlenaObjetoDetalle(cPed_cNummov);
-                oEntidad.Pedidos  = await LlenaObjetoPedidos(cPed_cNummov);
+                oEntidad.Detalle = await LlenaObjetoDetalle(cPed_cNummov);
+                oEntidad.Pedidos = await LlenaObjetoPedidos(cPed_cNummov);
 
                 string resultPost = ProcedimientosAPI.GetPostGrabarPedido(oEntidad);
 
@@ -408,25 +449,25 @@ namespace RestoPLUS.Views
 
             try
             {
-                foreach (System.Data.DataRow oRow in dtPedidos.Rows)
+                foreach (var item in pedidos)
                 {
-                    
+
 
                     VTD_RESTO_APERTURA_PEDIDO_Entity oEntidad = new VTD_RESTO_APERTURA_PEDIDO_Entity();
 
-                    
+
                     oEntidad.Accion = "INSERTAR";
                     oEntidad.Emp_cCodigo = Emp_cCodigo;
                     oEntidad.Pan_cAnio = Pan_cAnio;
                     oEntidad.Res_cNummov = Res_cNummov;
                     oEntidad.Pvt_cCodigo = Pvt_cCodigo;
                     oEntidad.Ped_cNummov = cPed_cNummov;
-                    oEntidad.Ped_nItem = Convert.ToInt16(oRow["Ped_nItem"]);
-                    oEntidad.Cab_cCatalogo = General.CE(oRow["Cab_cCatalogo"]);
-                    oEntidad.Ped_nCantidad = Convert.ToInt16(oRow["Ped_nCantidad"]);
-                    oEntidad.Ped_cComentario = General.CE(oRow["Ped_cComentario"]);
+                    oEntidad.Ped_nItem = Convert.ToInt16(item.Ped_nItem);
+                    oEntidad.Cab_cCatalogo = General.CE(item.Cab_cCatalogo);
+                    oEntidad.Ped_nCantidad = Convert.ToInt16(item.Ped_nCantidad);
+                    oEntidad.Ped_cComentario = General.CE(item.Ped_cComentario);
                     oEntidad.Ped_cEstado = "A";
-                    oEntidad.Ped_cUser = Usu_cCodUsuario ;
+                    oEntidad.Ped_cUser = Usu_cCodUsuario;
 
                     oEntidades.Add(oEntidad);
                 }
@@ -453,10 +494,11 @@ namespace RestoPLUS.Views
                 oEntidad.Res_cNummov = Res_cNummov;
                 oEntidad.Pvt_cCodigo = Pvt_cCodigo;
                 oEntidad.Ped_cNummov = cPed_cNummov;
-                oEntidad.Ten_cTipoEntidad  = "";
+                oEntidad.Ten_cTipoEntidad = "";
                 oEntidad.Ent_cCodEntidad = "";
-                oEntidad.Ape_cEstado  = "A";
+                oEntidad.Ape_cEstado = "A";
                 oEntidad.Ape_cUser = Usu_cCodUsuario;
+                oEntidad.Mes_cCodigo = Mes_cCodigo;
 
             }
             catch (Exception ex)
@@ -482,8 +524,8 @@ namespace RestoPLUS.Views
                 oEntidad.Ape_dFecha = DateTime.Today;
                 oEntidad.Ape_cEstado = "A";
                 oEntidad.Ape_cComentario = "";
-                oEntidad.Ape_cUser  = Usu_cCodUsuario ;
-                
+                oEntidad.Ape_cUser = Usu_cCodUsuario;
+
             }
             catch (Exception ex)
             {
