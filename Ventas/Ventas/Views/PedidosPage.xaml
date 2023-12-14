@@ -25,7 +25,7 @@
                         <RowDefinition Height="40" />
                     </Grid.RowDefinitions>
 
-                    <Button Grid.Column="0" Text="Actualizar" TextColor="White" BackgroundColor="BurlyWood"  Command="{Binding RefreshCommand}"  FontSize="Medium"   CommandParameter="{Binding .}" CornerRadius="5"/>
+                    <Button Grid.Column="0" Text="Actualizar" TextColor="White" BackgroundColor="Peru"  Command="{Binding RefreshCommand}"  FontSize="Medium"   CommandParameter="{Binding .}" CornerRadius="5"/>
                 </Grid>
             </StackLayout>
             
@@ -37,7 +37,7 @@
                 SelectionMode="None" 
                 
                                    
-                BackgroundColor="WhiteSmoke"
+                BackgroundColor="Bisque"
                 ItemSpacing="10,5,10,5"
                 ItemSize="{OnPlatform Android={OnIdiom Phone=80, Tablet=100}, iOS={OnIdiom Phone=100, Tablet= 90}, UWP={OnIdiom Phone=120, Tablet=150, Desktop=150}, macOS=105,WPF=150}"
                 SelectionBackgroundColor="#ECECEC"
